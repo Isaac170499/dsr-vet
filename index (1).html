@@ -1,146 +1,119 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DSR VET - Clínica Veterinária</title>
+
+  <!-- Favicon (logo) -->
+  <link rel="icon" type="image/png" href="https://i.postimg.cc/x1kjf69j/logo-dsrvet-transparente.png" />
+
+  <!-- Ícones -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
   <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: #222;
-      background: url('https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=1920&q=80');
-      background-repeat: no-repeat;
-      background-position: center center;
-      background-size: cover;
-      background-attachment: fixed;
+    :root { --roxo:#4B0082; }
+    * { box-sizing: border-box; }
+    body{
+      margin:0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      color:#222;
+      background: url('https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
       background-size: cover;
     }
-
-    .overlay {
-      background-color: rgba(255, 255, 255, 0.65);
-      min-height: 100vh;
-      padding: 2rem 1rem;
+    .overlay{
+      background-color: rgba(255,255,255,.72);
+      min-height:100vh;
+      padding:2rem 1rem;
     }
 
-    header {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
+    /* Header */
+    header{ text-align:center; margin-bottom:1.25rem; }
+    header img{ width:200px; margin-bottom:.75rem; }
 
-    header img {
-      width: 200px;
-      margin-bottom: 1rem;
+    /* Carrossel SEM CORTES (altura natural das fotos) */
+    .hero-carousel{
+      max-width:1080px; margin:0 auto 1rem;
+      border-radius:14px; overflow:hidden;
+      box-shadow:0 8px 24px rgba(0,0,0,.12);
+      background:transparent;
     }
+    .hero-carousel .slides{ width:100%; }
+    .hero-carousel .slides img{
+      width:100%; height:auto; display:none; border-radius:14px;
+    }
+    .hero-carousel .slides img.active{ display:block; }
+    .hero-carousel .dots{ display:flex; gap:.5rem; justify-content:center; margin:.6rem 0 .2rem; }
+    .hero-carousel .dots button{
+      width:8px; height:8px; border-radius:999px; border:0; background:#c9c9cf; cursor:pointer;
+    }
+    .hero-carousel .dots button.active{ background:var(--roxo); width:20px; }
 
-    h1 {
-      font-size: 2.5rem;
-      margin-top: 0.5rem;
-      color: #4B0082;
-    }
+    /* Título / subtítulo */
+    h1{ font-size:2.2rem; margin:.5rem 0 0; color:var(--roxo); text-align:center; }
+    .subtitulo{ font-size:1.05rem; color:#555; margin:.25rem 0 1rem; text-align:center; }
 
-    .subtitulo {
-      font-size: 1.2rem;
-      color: #555;
+    /* CTA */
+    .btn-cta{
+      display:inline-block; background:var(--roxo); color:#fff;
+      padding:1rem 2rem; border-radius:10px; text-decoration:none; font-weight:700; transition:.3s;
     }
+    .btn-cta:hover{ background:#360060; }
+    .btn-cta i{ margin-right:.5rem; }
+    .cta{ text-align:center; margin-top:1rem; }
 
-    .conteudo {
-      max-width: 1000px;
-      margin: 0 auto;
-      background-color: #fff;
-      padding: 2rem;
-      border-radius: 16px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    /* Bloco principal */
+    .conteudo{
+      max-width:1000px; margin:0 auto; background:#fff; padding:2rem;
+      border-radius:16px; box-shadow:0 4px 12px rgba(0,0,0,.1);
     }
+    .grid{ display:flex; flex-wrap:wrap; gap:2rem; justify-content:space-between; align-items:stretch; }
+    .coluna{ flex:1 1 45%; min-width:260px; display:flex; flex-direction:column; }
+    h2{ margin:0 0 .5rem; color:#111; }
+    ul{ list-style:none; padding:0; margin:.5rem 0 0; }
+    li{ margin-bottom:.65rem; display:flex; align-items:center; }
+    li i{ color:var(--roxo); margin-right:.5rem; min-width:20px; }
+    .coluna .cta{ margin-top:auto; }
 
-    .grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      justify-content: space-between;
-    }
+    /* Estrutura / galerias */
+    .estrutura{ margin-top:2rem; }
+    .estrutura h2{ margin:1.5rem 0 .75rem; }
+    .estrutura .grupo{ font-weight:700; color:var(--roxo); margin:.25rem 0 .75rem; }
+    .galeria{ display:flex; flex-wrap:wrap; gap:.75rem; }
+    .galeria img{ width:100%; max-width:300px; border-radius:12px; display:block; }
 
-    .coluna {
-      flex: 1 1 45%;
-      min-width: 250px;
-    }
-
-    ul {
-      padding: 0;
-      list-style: none;
-      margin-top: 1rem;
-    }
-
-    li {
-      margin-bottom: 0.75rem;
-      display: flex;
-      align-items: center;
-    }
-
-    li i {
-      color: #4B0082;
-      margin-right: 0.5rem;
-      min-width: 20px;
-    }
-
-    .estrutura {
-      margin-top: 3rem;
-    }
-
-    .estrutura img {
-      width: 100%;
-      max-width: 300px;
-      margin: 1rem 1rem 1rem 0;
-      border-radius: 12px;
-    }
-
-    .cta {
-      text-align: center;
-      margin-top: 2rem;
-    }
-
-    .cta a {
-      display: inline-block;
-      background-color: #4B0082;
-      color: #fff;
-      padding: 1rem 2rem;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-
-    .cta a:hover {
-      background-color: #360060;
-    }
-
-    .social {
-      text-align: center;
-      margin-top: 1rem;
-    }
-
-    .mapa {
-      margin-top: 2rem;
-      border-radius: 12px;
-      overflow: hidden;
-    }
-
-    footer {
-      text-align: center;
-      margin-top: 3rem;
-      font-size: 0.9rem;
-      color: #555;
-    }
+    /* Social / mapa / footer */
+    .social{ text-align:center; margin-top:1rem; }
+    .social a{ color:var(--roxo); font-weight:700; text-decoration:none; }
+    .mapa{ margin-top:2rem; border-radius:12px; overflow:hidden; }
+    footer{ text-align:center; margin-top:2rem; font-size:.9rem; color:#555; }
   </style>
 </head>
 <body>
   <div class="overlay">
     <header>
       <img src="https://i.postimg.cc/x1kjf69j/logo-dsrvet-transparente.png" alt="Logo DSR VET" />
+
+      <!-- Carrossel -->
+      <div class="hero-carousel">
+        <div class="slides">
+          <img src="https://i.postimg.cc/hhWYtqvs/Whats-App-Image-2025-08-10-at-12-10-20.jpg" alt="Dra com pet 1" class="active" loading="lazy">
+          <img src="https://i.postimg.cc/DfJy0dm4/Whats-App-Image-2025-08-10-at-12-07-34-2.jpg" alt="Dra com pet 2" loading="lazy">
+          <img src="https://i.postimg.cc/9X6X7Rq8/Whats-App-Image-2025-08-10-at-12-07-34-1.jpg" alt="Dra com pet 3" loading="lazy">
+          <img src="https://i.postimg.cc/qM2JXJsk/Whats-App-Image-2025-08-10-at-12-07-34.jpg" alt="Dra com pet 4" loading="lazy">
+          <img src="https://i.postimg.cc/4d0MjcTr/Whats-App-Image-2025-08-01-at-19-56-45.jpg" alt="Dra com pet 5" loading="lazy">
+        </div>
+        <div class="dots"></div>
+      </div>
+
       <h1>Cuidado e carinho para quem você ama!</h1>
       <p class="subtitulo">Atendimento especializado em cães, gatos e aves.</p>
+
+      <div class="cta">
+        <a class="btn-cta" href="https://wa.me/5561994379597" target="_blank">
+          <i class="fab fa-whatsapp"></i> Agende seu atendimento
+        </a>
+      </div>
     </header>
 
     <section class="conteudo">
@@ -156,7 +129,11 @@
             <li><i class="fas fa-syringe"></i> Cirurgias</li>
             <li><i class="fas fa-bed"></i> Internação 24h</li>
           </ul>
+          <div class="cta">
+            <a class="btn-cta" href="https://wa.me/5561994379597" target="_blank"><i class="fab fa-whatsapp"></i> Agende seu atendimento</a>
+          </div>
         </div>
+
         <div class="coluna">
           <h2>Nossos diferenciais</h2>
           <ul>
@@ -166,52 +143,51 @@
             <li><i class="fas fa-syringe"></i> Anestesiologia</li>
             <li><i class="fas fa-hospital"></i> Estrutura moderna e acolhedora</li>
           </ul>
+          <div class="cta">
+            <a class="btn-cta" href="https://wa.me/5561994379597" target="_blank"><i class="fab fa-whatsapp"></i> Agende seu atendimento</a>
+          </div>
         </div>
       </div>
 
       <h2>Nossa estrutura</h2>
 
       <div class="estrutura">
-        <ul><li><strong style="color:#4B0082">Recepção</strong></li></ul>
-        <div>
-          <img src="https://i.postimg.cc/kG7DD7Dx/Whats-App-Image-2025-07-31-at-20-43-53.jpg">
-          <img src="https://i.postimg.cc/sxKxhbZb/Whats-App-Image-2025-07-31-at-20-43-53-1.jpg">
-          <img src="https://i.postimg.cc/mDfPfYsp/Whats-App-Image-2025-07-31-at-20-43-53-2.jpg">
+        <div class="grupo">Recepção</div>
+        <div class="galeria">
+          <img src="https://i.postimg.cc/kG7DD7Dx/Whats-App-Image-2025-07-31-at-20-43-53.jpg" alt="Recepção 1" loading="lazy">
+          <img src="https://i.postimg.cc/sxKxhbZb/Whats-App-Image-2025-07-31-at-20-43-53-1.jpg" alt="Recepção 2" loading="lazy">
+          <img src="https://i.postimg.cc/mDfPfYsp/Whats-App-Image-2025-07-31-at-20-43-53-2.jpg" alt="Recepção 3" loading="lazy">
         </div>
       </div>
 
       <div class="estrutura">
-        <ul><li><strong style="color:#4B0082">Consultório</strong></li></ul>
-        <div>
-          <img src="https://i.postimg.cc/25v5w1ZQ/Whats-App-Image-2025-07-31-at-20-16-04.jpg">
-          <img src="https://i.postimg.cc/MTSprz7h/Whats-App-Image-2025-07-31-at-20-22-56.jpg">
-          <img src="https://i.postimg.cc/L66np4cS/Whats-App-Image-2025-07-31-at-20-16-25-1.jpg">
+        <div class="grupo">Consultório</div>
+        <div class="galeria">
+          <img src="https://i.postimg.cc/25v5w1ZQ/Whats-App-Image-2025-07-31-at-20-16-04.jpg" alt="Consultório 1" loading="lazy">
+          <img src="https://i.postimg.cc/MTSprz7h/Whats-App-Image-2025-07-31-at-20-22-56.jpg" alt="Consultório 2" loading="lazy">
+          <img src="https://i.postimg.cc/L66np4cS/Whats-App-Image-2025-07-31-at-20-16-25-1.jpg" alt="Consultório 3" loading="lazy">
         </div>
       </div>
 
       <div class="estrutura">
-        <ul><li><strong style="color:#4B0082">Internação</strong></li></ul>
-        <div>
-          <img src="https://i.postimg.cc/Z5WnW7YD/Whats-App-Image-2025-07-31-at-20-16-24.jpg">
-          <img src="https://i.postimg.cc/wjnvLX7x/Whats-App-Image-2025-07-31-at-20-16-24-1.jpg">
-          <img src="https://i.postimg.cc/tRzYwnmD/Whats-App-Image-2025-07-31-at-20-16-24-2.jpg">
+        <div class="grupo">Internação</div>
+        <div class="galeria">
+          <img src="https://i.postimg.cc/Z5WnW7YD/Whats-App-Image-2025-07-31-at-20-16-24.jpg" alt="Internação 1" loading="lazy">
+          <img src="https://i.postimg.cc/wjnvLX7x/Whats-App-Image-2025-07-31-at-20-16-24-1.jpg" alt="Internação 2" loading="lazy">
+          <img src="https://i.postimg.cc/tRzYwnmD/Whats-App-Image-2025-07-31-at-20-16-24-2.jpg" alt="Internação 3" loading="lazy">
         </div>
       </div>
 
       <div class="cta">
-        <a href="https://wa.me/5561994379597" target="_blank">
-          <i class="fab fa-whatsapp"></i> Agende seu atendimento
-        </a>
+        <a class="btn-cta" href="https://wa.me/5561994379597" target="_blank"><i class="fab fa-whatsapp"></i> Agende seu atendimento</a>
       </div>
 
       <div class="social">
-        <a href="https://www.instagram.com/dsr_vet?igsh=aG1rYzNwcjNsaW5o" target="_blank">
-          <i class="fab fa-instagram"></i> Siga-nos no Instagram @dsr_vet
-        </a>
+        <a href="https://www.instagram.com/dsr_vet" target="_blank"><i class="fab fa-instagram"></i> Siga-nos no Instagram @dsr_vet</a>
       </div>
 
       <div class="mapa">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15306.607525167425!2d-48.0543198!3d-15.9128397!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935a333f7d1b1d3f%3A0xe4294ea607ce9c75!2sQuadra%20601%20Conjunto%2001%20-%20Recanto%20das%20Emas%2C%20Bras%C3%ADlia%20-%20DF%2C%2072640-101!5e0!3m2!1spt-BR!2sbr!4v1720973000000" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15306.607525167425!2d-48.0543198!3d-15.9128397!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935a333f7d1b1d3f%3A0xe4294ea607ce9c75!2sQuadra%20601%20Conjunto%2001%20-%20Recanto%20das%20Emas%2C%20Bras%C3%ADlia%20-%20DF%2C%2072640-101!5e0!3m2!1spt-BR!2sbr!4v1720973000000" width="100%" height="300" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </section>
 
@@ -219,5 +195,36 @@
       <p><strong>Endereço:</strong> Quadra 601 conjunto 01, casa 22b, Recanto das Emas, Brasília - DF, CEP 72640101</p>
     </footer>
   </div>
+
+  <script>
+    (function(){
+      const c = document.querySelector('.hero-carousel');
+      if(!c) return;
+      const imgs = [...c.querySelectorAll('.slides img')];
+      const dots = c.querySelector('.dots');
+
+      imgs.forEach((_, i) => {
+        const b = document.createElement('button');
+        if(i === 0) b.classList.add('active');
+        b.addEventListener('click', () => go(i));
+        dots.appendChild(b);
+      });
+
+      let idx = 0, t;
+      const go = (i) => {
+        imgs[idx].classList.remove('active');
+        dots.children[idx].classList.remove('active');
+        idx = i;
+        imgs[idx].classList.add('active');
+        dots.children[idx].classList.add('active');
+        reset();
+      };
+      const next = () => go((idx + 1) % imgs.length);
+      const reset = () => { clearInterval(t); t = setInterval(next, 10000); }; // 10s
+      c.addEventListener('mouseenter', () => clearInterval(t));
+      c.addEventListener('mouseleave', reset);
+      reset();
+    })();
+  </script>
 </body>
 </html>
