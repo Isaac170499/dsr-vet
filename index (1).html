@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NTGMSBJP');</script>
+<!-- End Google Tag Manager -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DSR VET - Clínica Veterinária</title>
@@ -22,7 +29,7 @@
       background-size: cover;
     }
     .overlay{
-      background-color: rgba(255,255,255,.72);
+      background-color: rgba(255,255,255,.72); /* deixa o cachorro visível ao fundo */
       min-height:100vh;
       padding:2rem 1rem;
     }
@@ -31,12 +38,14 @@
     header{ text-align:center; margin-bottom:1.25rem; }
     header img{ width:200px; margin-bottom:.75rem; }
 
-    /* Carrossel SEM CORTES (altura natural das fotos) */
+    /* Carrossel SEM CORTES (altura natural das fotos) + setas laterais */
     .hero-carousel{
-      max-width:1080px; margin:0 auto 1rem;
+      max-width:900px; /* reduzido para evitar upscale e perda de nitidez */
+      margin:1rem auto;
       border-radius:14px; overflow:hidden;
       box-shadow:0 8px 24px rgba(0,0,0,.12);
       background:transparent;
+      position:relative;
     }
     .hero-carousel .slides{ width:100%; }
     .hero-carousel .slides img{
@@ -48,6 +57,21 @@
       width:8px; height:8px; border-radius:999px; border:0; background:#c9c9cf; cursor:pointer;
     }
     .hero-carousel .dots button.active{ background:var(--roxo); width:20px; }
+
+    .hero-carousel .nav{
+      position:absolute; top:50%; transform:translateY(-50%);
+      width:42px; height:42px; border:none; border-radius:50%;
+      background:rgba(0,0,0,.45); color:#fff; font-size:20px;
+      display:flex; align-items:center; justify-content:center;
+      cursor:pointer; transition:.2s; z-index:2;
+    }
+    .hero-carousel .nav:hover{ background:rgba(0,0,0,.65); }
+    .hero-carousel .nav.prev{ left:10px; }
+    .hero-carousel .nav.next{ right:10px; }
+    @media (max-width:640px){
+      .hero-carousel .nav{ width:36px;height:36px;font-size:18px; }
+      .hero-carousel .nav.prev{ left:6px; } .hero-carousel .nav.next{ right:6px; }
+    }
 
     /* Título / subtítulo */
     h1{ font-size:2.2rem; margin:.5rem 0 0; color:var(--roxo); text-align:center; }
@@ -73,7 +97,7 @@
     ul{ list-style:none; padding:0; margin:.5rem 0 0; }
     li{ margin-bottom:.65rem; display:flex; align-items:center; }
     li i{ color:var(--roxo); margin-right:.5rem; min-width:20px; }
-    .coluna .cta{ margin-top:auto; }
+    .coluna .cta{ margin-top:auto; } /* deixa o botão alinhado no rodapé da coluna no desktop */
 
     /* Estrutura / galerias */
     .estrutura{ margin-top:2rem; }
@@ -90,27 +114,18 @@
   </style>
 </head>
 <body>
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NTGMSBJP"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
   <div class="overlay">
     <header>
       <img src="https://i.postimg.cc/x1kjf69j/logo-dsrvet-transparente.png" alt="Logo DSR VET" />
-
-      <!-- Carrossel -->
-      <div class="hero-carousel">
-        <div class="slides">
-          <img src="https://i.postimg.cc/hhWYtqvs/Whats-App-Image-2025-08-10-at-12-10-20.jpg" alt="Dra com pet 1" class="active" loading="lazy">
-          <img src="https://i.postimg.cc/DfJy0dm4/Whats-App-Image-2025-08-10-at-12-07-34-2.jpg" alt="Dra com pet 2" loading="lazy">
-          <img src="https://i.postimg.cc/9X6X7Rq8/Whats-App-Image-2025-08-10-at-12-07-34-1.jpg" alt="Dra com pet 3" loading="lazy">
-          <img src="https://i.postimg.cc/qM2JXJsk/Whats-App-Image-2025-08-10-at-12-07-34.jpg" alt="Dra com pet 4" loading="lazy">
-          <img src="https://i.postimg.cc/4d0MjcTr/Whats-App-Image-2025-08-01-at-19-56-45.jpg" alt="Dra com pet 5" loading="lazy">
-        </div>
-        <div class="dots"></div>
-      </div>
-
       <h1>Cuidado e carinho para quem você ama!</h1>
       <p class="subtitulo">Atendimento especializado em cães, gatos e aves.</p>
 
       <div class="cta">
-        <a class="btn-cta" href="https://wa.me/5561994379597" target="_blank">
+        <a class="btn-cta" href="https://wa.me/5561994379597" target="_blank" rel="noopener noreferrer">
           <i class="fab fa-whatsapp"></i> Agende seu atendimento
         </a>
       </div>
@@ -130,7 +145,9 @@
             <li><i class="fas fa-bed"></i> Internação 24h</li>
           </ul>
           <div class="cta">
-            <a class="btn-cta" href="https://wa.me/5561994379597" target="_blank"><i class="fab fa-whatsapp"></i> Agende seu atendimento</a>
+            <a class="btn-cta" href="https://wa.me/5561994379597" target="_blank" rel="noopener noreferrer">
+              <i class="fab fa-whatsapp"></i> Agende seu atendimento
+            </a>
           </div>
         </div>
 
@@ -144,7 +161,9 @@
             <li><i class="fas fa-hospital"></i> Estrutura moderna e acolhedora</li>
           </ul>
           <div class="cta">
-            <a class="btn-cta" href="https://wa.me/5561994379597" target="_blank"><i class="fab fa-whatsapp"></i> Agende seu atendimento</a>
+            <a class="btn-cta" href="https://wa.me/5561994379597" target="_blank" rel="noopener noreferrer">
+              <i class="fab fa-whatsapp"></i> Agende seu atendimento
+            </a>
           </div>
         </div>
       </div>
@@ -178,12 +197,30 @@
         </div>
       </div>
 
+      <!-- Carrossel movido para após as fotos da internação -->
+      <div class="hero-carousel" id="hero">
+        <button class="nav prev" aria-label="Foto anterior">❮</button>
+        <div class="slides">
+          <img src="https://i.postimg.cc/hhWYtqvs/Whats-App-Image-2025-08-10-at-12-10-20.jpg" alt="Dra com pet 1" class="active" loading="lazy">
+          <img src="https://i.postimg.cc/DfJy0dm4/Whats-App-Image-2025-08-10-at-12-07-34-2.jpg" alt="Dra com pet 2" loading="lazy">
+          <img src="https://i.postimg.cc/9X6X7Rq8/Whats-App-Image-2025-08-10-at-12-07-34-1.jpg" alt="Dra com pet 3" loading="lazy">
+          <img src="https://i.postimg.cc/qM2JXJsk/Whats-App-Image-2025-08-10-at-12-07-34.jpg" alt="Dra com pet 4" loading="lazy">
+          <img src="https://i.postimg.cc/4d0MjcTr/Whats-App-Image-2025-08-01-at-19-56-45.jpg" alt="Dra com pet 5" loading="lazy">
+        </div>
+        <button class="nav next" aria-label="Próxima foto">❯</button>
+        <div class="dots"></div>
+      </div>
+
       <div class="cta">
-        <a class="btn-cta" href="https://wa.me/5561994379597" target="_blank"><i class="fab fa-whatsapp"></i> Agende seu atendimento</a>
+        <a class="btn-cta" href="https://wa.me/5561994379597" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-whatsapp"></i> Agende seu atendimento
+        </a>
       </div>
 
       <div class="social">
-        <a href="https://www.instagram.com/dsr_vet" target="_blank"><i class="fab fa-instagram"></i> Siga-nos no Instagram @dsr_vet</a>
+        <a href="https://www.instagram.com/dsr_vet" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-instagram"></i> Siga-nos no Instagram @dsr_vet
+        </a>
       </div>
 
       <div class="mapa">
@@ -196,33 +233,52 @@
     </footer>
   </div>
 
+  <!-- Script do carrossel com setas, dots, autoplay 10s -->
   <script>
     (function(){
-      const c = document.querySelector('.hero-carousel');
+      const c = document.getElementById('hero');
       if(!c) return;
-      const imgs = [...c.querySelectorAll('.slides img')];
-      const dots = c.querySelector('.dots');
 
+      const imgs   = [...c.querySelectorAll('.slides img')];
+      const dotsEl = c.querySelector('.dots');
+      const btnPrev = c.querySelector('.nav.prev');
+      const btnNext = c.querySelector('.nav.next');
+
+      // cria dots
       imgs.forEach((_, i) => {
         const b = document.createElement('button');
         if(i === 0) b.classList.add('active');
         b.addEventListener('click', () => go(i));
-        dots.appendChild(b);
+        dotsEl.appendChild(b);
       });
 
       let idx = 0, t;
-      const go = (i) => {
+      const show = (i) => {
         imgs[idx].classList.remove('active');
-        dots.children[idx].classList.remove('active');
-        idx = i;
+        dotsEl.children[idx].classList.remove('active');
+        idx = (i + imgs.length) % imgs.length;
         imgs[idx].classList.add('active');
-        dots.children[idx].classList.add('active');
-        reset();
+        dotsEl.children[idx].classList.add('active');
       };
-      const next = () => go((idx + 1) % imgs.length);
+      const next  = () => show(idx + 1);
+      const prev  = () => show(idx - 1);
       const reset = () => { clearInterval(t); t = setInterval(next, 10000); }; // 10s
+
+      function go(i){ show(i); reset(); }
+
+      btnNext.addEventListener('click', () => { next(); reset(); });
+      btnPrev.addEventListener('click', () => { prev(); reset(); });
+
+      // pausa autoplay no hover (desktop)
       c.addEventListener('mouseenter', () => clearInterval(t));
       c.addEventListener('mouseleave', reset);
+
+      // setas do teclado
+      document.addEventListener('keydown', (e) => {
+        if(e.key === 'ArrowRight') { next(); reset(); }
+        if(e.key === 'ArrowLeft')  { prev(); reset(); }
+      });
+
       reset();
     })();
   </script>
