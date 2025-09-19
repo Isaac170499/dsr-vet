@@ -1,31 +1,37 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <!-- CSP (Opção A) -->
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-NTGMSBJP');</script>
+  <!-- End Google Tag Manager -->
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- CSP corrigida -->
   <meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
     script-src 'self' 'unsafe-inline'
-      https://www.googletagmanager.com https://www.google-analytics.com;
+      https://www.googletagmanager.com https://www.google-analytics.com
+      https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net;
     connect-src 'self'
-      https://www.google-analytics.com https://region1.google-analytics.com https://stats.g.doubleclick.net
-      https://www.googletagmanager.com;
+      https://www.google-analytics.com https://region1.google-analytics.com
+      https://stats.g.doubleclick.net https://www.googletagmanager.com
+      https://www.google.com https://googleads.g.doubleclick.net;
     img-src 'self' data:
       https://www.google-analytics.com https://www.googletagmanager.com
+      https://www.google.com https://googleads.g.doubleclick.net
+      https://pagead2.googlesyndication.com
       https://i.postimg.cc https://images.unsplash.com;
     style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;
     font-src 'self' https://cdnjs.cloudflare.com;
     frame-src https://www.googletagmanager.com https://tagassistant.google.com https://www.google.com;
   ">
 
-  <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-NTGMSBJP');</script>
-<!-- End Google Tag Manager -->
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DSR VET - Clínica Veterinária</title>
 
   <!-- Favicon (logo) -->
@@ -45,18 +51,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       background-size: cover;
     }
     .overlay{
-      background-color: rgba(255,255,255,.72); /* deixa o cachorro visível ao fundo */
+      background-color: rgba(255,255,255,.72);
       min-height:100vh;
       padding:2rem 1rem;
     }
 
-    /* Header */
     header{ text-align:center; margin-bottom:1.25rem; }
     header img{ width:200px; margin-bottom:.75rem; }
 
-    /* Carrossel SEM CORTES (altura natural das fotos) + setas laterais */
     .hero-carousel{
-      max-width:900px; /* reduzido para evitar upscale e perda de nitidez */
+      max-width:900px;
       margin:1rem auto;
       border-radius:14px; overflow:hidden;
       box-shadow:0 8px 24px rgba(0,0,0,.12);
@@ -89,11 +93,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       .hero-carousel .nav.prev{ left:6px; } .hero-carousel .nav.next{ right:6px; }
     }
 
-    /* Título / subtítulo */
     h1{ font-size:2.2rem; margin:.5rem 0 0; color:var(--roxo); text-align:center; }
     .subtitulo{ font-size:1.05rem; color:#555; margin:.25rem 0 1rem; text-align:center; }
 
-    /* CTA */
     .btn-cta{
       display:inline-block; background:var(--roxo); color:#fff;
       padding:1rem 2rem; border-radius:10px; text-decoration:none; font-weight:700; transition:.3s;
@@ -102,7 +104,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .btn-cta i{ margin-right:.5rem; }
     .cta{ text-align:center; margin-top:1rem; }
 
-    /* Bloco principal */
     .conteudo{
       max-width:1000px; margin:0 auto; background:#fff; padding:2rem;
       border-radius:16px; box-shadow:0 4px 12px rgba(0,0,0,.1);
@@ -113,16 +114,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     ul{ list-style:none; padding:0; margin:.5rem 0 0; }
     li{ margin-bottom:.65rem; display:flex; align-items:center; }
     li i{ color:var(--roxo); margin-right:.5rem; min-width:20px; }
-    .coluna .cta{ margin-top:auto; } /* deixa o botão alinhado no rodapé da coluna no desktop */
+    .coluna .cta{ margin-top:auto; }
 
-    /* Estrutura / galerias */
     .estrutura{ margin-top:2rem; }
     .estrutura h2{ margin:1.5rem 0 .75rem; }
     .estrutura .grupo{ font-weight:700; color:var(--roxo); margin:.25rem 0 .75rem; }
     .galeria{ display:flex; flex-wrap:wrap; gap:.75rem; }
     .galeria img{ width:100%; max-width:300px; border-radius:12px; display:block; }
 
-    /* Social / mapa / footer */
     .social{ text-align:center; margin-top:1rem; }
     .social a{ color:var(--roxo); font-weight:700; text-decoration:none; }
     .mapa{ margin-top:2rem; border-radius:12px; overflow:hidden; }
@@ -131,9 +130,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NTGMSBJP"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NTGMSBJP"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
   <div class="overlay">
     <header>
       <img src="https://i.postimg.cc/x1kjf69j/logo-dsrvet-transparente.png" alt="Logo DSR VET" />
@@ -213,7 +213,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
 
-      <!-- Carrossel movido para após as fotos da internação -->
+      <!-- Carrossel após as fotos da internação -->
       <div class="hero-carousel" id="hero">
         <button class="nav prev" aria-label="Foto anterior">❮</button>
         <div class="slides">
@@ -249,7 +249,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </footer>
   </div>
 
-  <!-- Script do carrossel com setas, dots, autoplay 10s -->
+  <!-- Script do carrossel (setas, dots, autoplay 10s) -->
   <script>
     (function(){
       const c = document.getElementById('hero');
@@ -260,7 +260,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       const btnPrev = c.querySelector('.nav.prev');
       const btnNext = c.querySelector('.nav.next');
 
-      // cria dots
       imgs.forEach((_, i) => {
         const b = document.createElement('button');
         if(i === 0) b.classList.add('active');
@@ -285,11 +284,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       btnNext.addEventListener('click', () => { next(); reset(); });
       btnPrev.addEventListener('click', () => { prev(); reset(); });
 
-      // pausa autoplay no hover (desktop)
       c.addEventListener('mouseenter', () => clearInterval(t));
       c.addEventListener('mouseleave', reset);
 
-      // setas do teclado
       document.addEventListener('keydown', (e) => {
         if(e.key === 'ArrowRight') { next(); reset(); }
         if(e.key === 'ArrowLeft')  { prev(); reset(); }
