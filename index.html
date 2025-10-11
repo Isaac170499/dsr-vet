@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <!-- Google Tag Manager -->
@@ -390,7 +390,8 @@
 
               const payload = {
                   systemInstruction: { parts: [{ text: systemPrompt }] },
-                  contents: [{ parts: [{ text: prompt }] }],
+                  // [CORREÇÃO] Adicionado "role: 'user'" para a requisição ser válida
+                  contents: [{ role: "user", parts: [{ text: prompt }] }],
               };
 
               try {
@@ -414,6 +415,11 @@
                   if (candidate && candidate.content?.parts?.[0]?.text) {
                       return candidate.content.parts[0].text;
                   } else {
+                      // Verifica se a resposta foi bloqueada por segurança
+                      if(result.promptFeedback && result.promptFeedback.blockReason){
+                          console.error('Prompt bloqueado:', result.promptFeedback.blockReason);
+                          return "Sua pergunta não pôde ser processada por conter conteúdo sensível. Por favor, reformule a pergunta.";
+                      }
                       return "Desculpe, não consegui processar sua pergunta. Tente novamente.";
                   }
               } catch (error) {
