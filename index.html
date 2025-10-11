@@ -153,6 +153,7 @@
           margin-left: auto;
           margin-right: auto;
           white-space: pre-wrap;
+          word-wrap: break-word;
       }
       #gemini-result-container h3 {
           margin-top: 0;
@@ -365,7 +366,7 @@
       });
     </script>
     
-    <!-- Gemini AI Assistant Feature Script -->
+    <!-- [CORRIGIDO] Gemini AI Assistant Feature Script com tratamento de erro melhorado -->
     <script>
       (function() {
           const submitButton = document.getElementById('gemini-submit');
@@ -378,58 +379,67 @@
               return;
           }
 
-          const callGeminiApi = async (prompt, retries = 3, delay = 1000) => {
-              const apiKey = ""; 
-              const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+          const callGeminiApi = async (prompt) => {
+              const maxRetries = 3;
+              let delay = 1000;
+              let lastError = null;
 
-              const systemPrompt = `Você é um assistente virtual da clínica veterinária DSR VET. Sua função é fornecer informações gerais e educativas sobre cuidados com cães, gatos e aves.
-              Você NUNCA deve fornecer diagnósticos, prescrever tratamentos ou substituir uma consulta com um veterinário.
-              SEMPRE, ao final de cada resposta, inclua a seguinte frase em uma nova linha e em negrito:
-              '**Esta é uma informação geral e não substitui a avaliação de um médico veterinário. Para um diagnóstico preciso, agende uma consulta na DSR VET.**'
-              Responda de forma clara, amigável e concisa em português do Brasil.`;
+              for (let attempt = 1; attempt <= maxRetries; attempt++) {
+                  try {
+                      const apiKey = ""; 
+                      const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
 
-              const payload = {
-                  systemInstruction: { parts: [{ text: systemPrompt }] },
-                  // [CORREÇÃO] Adicionado "role: 'user'" para a requisição ser válida
-                  contents: [{ role: "user", parts: [{ text: prompt }] }],
-              };
+                      const systemPrompt = `Você é um assistente virtual da clínica veterinária DSR VET. Sua função é fornecer informações gerais e educativas sobre cuidados com cães, gatos e aves.
+                      Você NUNCA deve fornecer diagnósticos, prescrever tratamentos ou substituir uma consulta com um veterinário.
+                      SEMPRE, ao final de cada resposta, inclua a seguinte frase em uma nova linha e em negrito:
+                      '**Esta é uma informação geral e não substitui a avaliação de um médico veterinário. Para um diagnóstico preciso, agende uma consulta na DSR VET.**'
+                      Responda de forma clara, amigável e concisa em português do Brasil.`;
 
-              try {
-                  const response = await fetch(apiUrl, {
-                      method: 'POST',
-                      headers: { 'Content-Type': 'application/json' },
-                      body: JSON.stringify(payload)
-                  });
+                      const payload = {
+                          systemInstruction: { parts: [{ text: systemPrompt }] },
+                          contents: [{ role: "user", parts: [{ text: prompt }] }],
+                      };
+                      
+                      const response = await fetch(apiUrl, {
+                          method: 'POST',
+                          headers: { 'Content-Type': 'application/json' },
+                          body: JSON.stringify(payload)
+                      });
 
-                  if (!response.ok) {
-                      if (response.status === 429 && retries > 0) {
+                      if (!response.ok) {
+                          let errorBody = 'Não foi possível ler o corpo do erro.';
+                          try {
+                              errorBody = await response.text();
+                          } catch (e) { /* ignora */ }
+                          throw new Error(`Erro na API ${response.status}: ${errorBody}`);
+                      }
+
+                      const result = await response.json();
+                      const candidate = result.candidates?.[0];
+
+                      if (candidate && candidate.content?.parts?.[0]?.text) {
+                          return candidate.content.parts[0].text; // Sucesso
+                      } else {
+                           if (result.promptFeedback && result.promptFeedback.blockReason) {
+                                const reason = result.promptFeedback.blockReason;
+                                console.error('Prompt bloqueado pela API:', reason);
+                                return `Sua pergunta não pôde ser processada (${reason}). Por favor, reformule-a.`;
+                           }
+                           console.error('Resposta da API sem conteúdo:', JSON.stringify(result));
+                           return "Desculpe, a IA retornou uma resposta vazia. Tente perguntar de outra forma.";
+                      }
+                  } catch (error) {
+                      console.error(`Tentativa ${attempt} falhou:`, error);
+                      lastError = error;
+                      if (attempt < maxRetries) {
                           await new Promise(resolve => setTimeout(resolve, delay));
-                          return callGeminiApi(prompt, retries - 1, delay * 2);
+                          delay *= 2; // Backoff exponencial
                       }
-                      throw new Error(`API Error: ${response.status} ${response.statusText}`);
                   }
-
-                  const result = await response.json();
-                  const candidate = result.candidates?.[0];
-
-                  if (candidate && candidate.content?.parts?.[0]?.text) {
-                      return candidate.content.parts[0].text;
-                  } else {
-                      // Verifica se a resposta foi bloqueada por segurança
-                      if(result.promptFeedback && result.promptFeedback.blockReason){
-                          console.error('Prompt bloqueado:', result.promptFeedback.blockReason);
-                          return "Sua pergunta não pôde ser processada por conter conteúdo sensível. Por favor, reformule a pergunta.";
-                      }
-                      return "Desculpe, não consegui processar sua pergunta. Tente novamente.";
-                  }
-              } catch (error) {
-                  console.error('Erro ao chamar a API Gemini:', error);
-                  if (retries > 0) {
-                      await new Promise(resolve => setTimeout(resolve, delay));
-                      return callGeminiApi(prompt, retries - 1, delay * 2);
-                  }
-                  return "Ocorreu um erro ao buscar a resposta. Por favor, verifique sua conexão e tente novamente.";
               }
+              
+              console.error('Todas as tentativas falharam.', lastError);
+              return `Ocorreu um erro ao buscar a resposta. Por favor, verifique sua conexão e tente novamente. Detalhe: ${lastError.message || 'Falha na comunicação com o servidor.'}`;
           };
 
           submitButton.addEventListener('click', async () => {
