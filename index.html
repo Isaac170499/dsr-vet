@@ -19,15 +19,13 @@
     <meta name="description" content="Clínica Veterinária DSR VET em Brasília - DF. Atendimento especializado para cães, gatos e aves. Consultas, exames, cirurgias e internação 24h. Agende agora!" />
 
     <!-- 
-      [CORREÇÃO] CSP Simplificado: A sua política de segurança (CSP) era muito restritiva e
-      poderia estar bloqueando scripts do Google Ads e do Analytics de funcionarem corretamente.
-      Esta versão é mais comum e permissiva para os serviços do Google, o que deve resolver
-      problemas de rastreamento.
+      [CORREÇÃO] CSP Ajustada: Adicionado 'https://*.google.com' à diretiva 'connect-src'
+      para permitir a solicitação que estava sendo bloqueada, conforme mostrado no print do Tag Assistant.
     -->
     <meta http-equiv="Content-Security-Policy" content="
       default-src 'self'; 
       script-src 'self' 'unsafe-inline' https://*.googletagmanager.com https://*.google-analytics.com;
-      connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com;
+      connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.google.com;
       img-src 'self' data: https:;
       style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;
       font-src 'self' https://cdnjs.cloudflare.com;
@@ -332,3 +330,4 @@
     </script>
 </body>
 </html>
+
