@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="pt-br">
 <head>
     <!-- Google Tag Manager -->
@@ -12,20 +12,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- 
-      [MELHORIA] Meta Description: Adicionada para melhorar o SEO e a descrição em resultados de busca.
-      É importante que o texto aqui seja relevante para os anúncios do Google.
-    -->
     <meta name="description" content="Clínica Veterinária DSR VET em Brasília - DF. Atendimento especializado para cães, gatos e aves. Consultas, exames, cirurgias e internação 24h. Agende agora!" />
 
-    <!-- 
-      [CORREÇÃO] CSP Ajustada: Adicionado 'https://*.google.com' à diretiva 'connect-src'
-      para permitir a solicitação que estava sendo bloqueada, conforme mostrado no print do Tag Assistant.
-    -->
     <meta http-equiv="Content-Security-Policy" content="
       default-src 'self'; 
-      script-src 'self' 'unsafe-inline' https://*.googletagmanager.com https://*.google-analytics.com;
-      connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.google.com;
+      script-src 'self' 'unsafe-inline' https://*.googletagmanager.com https://*.google-analytics.com https://generativelanguage.googleapis.com;
+      connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.google.com https://generativelanguage.googleapis.com;
       img-src 'self' data: https:;
       style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;
       font-src 'self' https://cdnjs.cloudflare.com;
@@ -34,10 +26,7 @@
 
     <title>DSR VET - Clínica Veterinária em Brasília - DF</title>
 
-    <!-- Favicon (logo) -->
     <link rel="icon" type="image/png" href="https://i.postimg.cc/x1kjf69j/logo-dsrvet-transparente.png" />
-
-    <!-- Ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
     <style>
@@ -47,32 +36,22 @@
         margin:0;
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
         color:#222;
-        /* [SUGESTÃO] Otimize a imagem de fundo para a web para carregar mais rápido */
         background: url('https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
         background-size: cover;
       }
       .overlay{
-        background-color: rgba(255,255,255,.8); /* Levemente mais opaco para legibilidade */
+        background-color: rgba(255,255,255,.8);
         min-height:100vh;
         padding:2rem 1rem;
       }
-
       header{ text-align:center; margin-bottom:1.25rem; }
-      /* [MELHORIA] Adicionado width e height para evitar Cumulative Layout Shift (CLS) */
       header img{ width:200px; height: auto; max-width: 100%; margin-bottom:.75rem; }
-
       .hero-carousel{
-        max-width:900px;
-        margin:1rem auto;
-        border-radius:14px; overflow:hidden;
-        box-shadow:0 8px 24px rgba(0,0,0,.12);
-        background:transparent;
-        position:relative;
+        max-width:900px; margin:1rem auto; border-radius:14px; overflow:hidden;
+        box-shadow:0 8px 24px rgba(0,0,0,.12); background:transparent; position:relative;
       }
       .hero-carousel .slides{ width:100%; }
-      .hero-carousel .slides img{
-        width:100%; height:auto; display:none; border-radius:14px;
-      }
+      .hero-carousel .slides img{ width:100%; height:auto; display:none; border-radius:14px; }
       .hero-carousel .slides img.active{ display:block; }
       .hero-carousel .dots{ display:flex; gap:.5rem; justify-content:center; margin:.6rem 0 .2rem; }
       .hero-carousel .dots button{
@@ -80,12 +59,9 @@
         transition: all 0.3s ease;
       }
       .hero-carousel .dots button.active{ background:var(--roxo); width:20px; }
-
       .hero-carousel .nav{
-        position:absolute; top:50%; transform:translateY(-50%);
-        width:42px; height:42px; border:none; border-radius:50%;
-        background:rgba(0,0,0,.45); color:#fff; font-size:20px;
-        display:flex; align-items:center; justify-content:center;
+        position:absolute; top:50%; transform:translateY(-50%); width:42px; height:42px; border:none; border-radius:50%;
+        background:rgba(0,0,0,.45); color:#fff; font-size:20px; display:flex; align-items:center; justify-content:center;
         cursor:pointer; transition:.2s; z-index:2;
       }
       .hero-carousel .nav:hover{ background:rgba(0,0,0,.65); }
@@ -95,19 +71,15 @@
         .hero-carousel .nav{ width:36px;height:36px;font-size:18px; }
         .hero-carousel .nav.prev{ left:6px; } .hero-carousel .nav.next{ right:6px; }
       }
-
       h1{ font-size:clamp(1.8rem, 5vw, 2.2rem); margin:.5rem 0 0; color:var(--roxo); text-align:center; }
       .subtitulo{ font-size: 1.05rem; color:#555; margin:.25rem 0 1rem; text-align:center; }
-
       .btn-cta{
-        display:inline-block; background:var(--roxo); color:#fff;
-        padding:1rem 2rem; border-radius:10px; text-decoration:none; font-weight:700; transition:.3s;
-        box-shadow: 0 4px 12px rgba(75, 0, 130, 0.3);
+        display:inline-block; background:var(--roxo); color:#fff; padding:1rem 2rem; border-radius:10px;
+        text-decoration:none; font-weight:700; transition:.3s; box-shadow: 0 4px 12px rgba(75, 0, 130, 0.3);
       }
       .btn-cta:hover{ background:#360060; transform: translateY(-2px); }
       .btn-cta i{ margin-right:.5rem; }
       .cta{ text-align:center; margin-top:1rem; }
-
       .conteudo{
         max-width:1000px; margin:0 auto; background:#fff; padding: clamp(1rem, 5vw, 2rem);
         border-radius:16px; box-shadow:0 4px 12px rgba(0,0,0,.1);
@@ -119,32 +91,98 @@
       li{ margin-bottom:.65rem; display:flex; align-items:center; }
       li i{ color:var(--roxo); margin-right:.5rem; min-width:20px; text-align: center; }
       .coluna .cta{ margin-top:auto; }
-
       .estrutura h2{ margin:1.5rem 0 .75rem; }
       .estrutura .grupo{ font-weight:700; color:var(--roxo); margin:.25rem 0 .75rem; }
       .galeria{ display:flex; flex-wrap:wrap; gap:.75rem; justify-content: center; }
       .galeria img{ width:100%; max-width:300px; border-radius:12px; display:block; object-fit: cover; }
-
       .social{ text-align:center; margin-top:2rem; }
       .social a{ color:var(--roxo); font-weight:700; text-decoration:none; font-size: 1.1rem;}
       .mapa{ margin-top:2rem; border-radius:12px; overflow:hidden; }
       footer{ text-align:center; margin-top:2rem; font-size:.9rem; color:#555; }
+      
+      /* Gemini Feature Styles */
+      .gemini-feature {
+          background-color: #f8f5fc;
+          border: 1px solid #e0d1f0;
+          padding: 2rem;
+          border-radius: 12px;
+          margin-top: 2.5rem;
+          margin-bottom: 2.5rem;
+          text-align: center;
+      }
+      .gemini-feature h2 {
+          color: var(--roxo);
+          padding-top: 0;
+      }
+      .gemini-feature .subtitulo{
+          font-size: 1rem;
+          color: #555;
+          max-width: 600px;
+          margin: 0.5rem auto 1.5rem;
+      }
+      #gemini-prompt {
+          width: 100%;
+          max-width: 600px;
+          height: 100px;
+          padding: 1rem;
+          border-radius: 8px;
+          border: 1px solid #ccc;
+          font-family: inherit;
+          font-size: 1rem;
+          margin-bottom: 1rem;
+          resize: vertical;
+          transition: border-color 0.3s;
+      }
+      #gemini-submit {
+          border: none;
+          cursor: pointer;
+          font-size: 1rem;
+      }
+      #gemini-submit:disabled {
+          background-color: #999;
+          cursor: not-allowed;
+      }
+      #gemini-result-container {
+          margin-top: 2rem;
+          padding: 1.5rem;
+          background: #fff;
+          border-radius: 8px;
+          text-align: left;
+          border: 1px solid #eee;
+          max-width: 700px;
+          margin-left: auto;
+          margin-right: auto;
+          white-space: pre-wrap;
+      }
+      #gemini-result-container h3 {
+          margin-top: 0;
+          color: #111;
+      }
+      .loader {
+          border: 5px solid #f3f3f3;
+          border-radius: 50%;
+          border-top: 5px solid var(--roxo);
+          width: 40px;
+          height: 40px;
+          animation: spin 1s linear infinite;
+          margin: 1rem auto;
+      }
+      @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+      }
     </style>
 </head>
 <body>
-    <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKKB2XWH"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
 
     <div class="overlay">
       <header>
         <img src="https://i.postimg.cc/x1kjf69j/logo-dsrvet-transparente.png" alt="Logo DSR VET Clínica Veterinária" />
         <h1>Cuidado e carinho para quem você ama!</h1>
         <p class="subtitulo">Atendimento especializado em cães, gatos e aves.</p>
-
         <div class="cta">
-          <!-- [MELHORIA] Adicionado ID para rastreamento de cliques -->
           <a id="cta-whatsapp-header" class="btn-cta" href="https://wa.me/5561994379597" target="_blank" rel="noopener noreferrer">
             <i class="fab fa-whatsapp"></i> Agende seu atendimento
           </a>
@@ -152,11 +190,6 @@
       </header>
 
       <main class="conteudo">
-        <!-- [SUGESTÃO] Adicionar um parágrafo aqui com palavras-chave importantes para os anúncios
-             Ex: "Localizada no Recanto das Emas, a DSR VET é sua clínica veterinária de confiança em Brasília.
-             Oferecemos uma estrutura completa e atendimento especializado para cães, gatos e aves,
-             incluindo dermatologia veterinária e internação 24 horas."
-        -->
         <div class="grid">
           <div class="coluna">
             <h2>Nossos serviços</h2>
@@ -192,6 +225,26 @@
             </div>
           </div>
         </div>
+        
+        <!-- Gemini Feature: Tire suas Dúvidas -->
+        <div class="gemini-feature">
+            <h2><i class="fas fa-robot"></i> Tem alguma dúvida sobre seu pet?</h2>
+            <p class="subtitulo">Use nossa assistente virtual para obter informações gerais sobre cuidados. Lembre-se, ela não substitui a avaliação de um veterinário.</p>
+            <textarea id="gemini-prompt" placeholder="Ex: Qual a melhor ração para um filhote de cachorro?"></textarea>
+            <div class="cta">
+                <button id="gemini-submit" class="btn-cta">
+                    ✨ Perguntar à IA
+                </button>
+            </div>
+            <div id="gemini-loader" style="display: none; text-align: center; margin-top: 1.5rem;">
+                <div class="loader"></div>
+                <p>Buscando a melhor resposta...</p>
+            </div>
+            <div id="gemini-result-container" style="display: none;">
+                <h3>Resposta da Assistente:</h3>
+                <div id="gemini-result"></div>
+            </div>
+        </div>
 
         <div class="estrutura">
             <h2>Nossa estrutura</h2>
@@ -221,7 +274,6 @@
             </div>
         </div>
 
-        <!-- Carrossel após as fotos da internação -->
         <div class="hero-carousel" id="hero">
           <button class="nav prev" aria-label="Foto anterior">❮</button>
           <div class="slides">
@@ -257,24 +309,20 @@
       </footer>
     </div>
 
-    <!-- Script do carrossel (sem alterações, está ótimo) -->
     <script>
       (function(){
         const c = document.getElementById('hero');
         if(!c) return;
-
-        const imgs   = [...c.querySelectorAll('.slides img')];
+        const imgs = [...c.querySelectorAll('.slides img')];
         const dotsEl = c.querySelector('.dots');
         const btnPrev = c.querySelector('.nav.prev');
         const btnNext = c.querySelector('.nav.next');
-
         imgs.forEach((_, i) => {
           const b = document.createElement('button');
           if(i === 0) b.classList.add('active');
           b.addEventListener('click', () => go(i));
           dotsEl.appendChild(b);
         });
-
         let idx = 0, t;
         const show = (i) => {
           imgs[idx].classList.remove('active');
@@ -286,37 +334,25 @@
         const next  = () => show(idx + 1);
         const prev  = () => show(idx - 1);
         const reset = () => { clearInterval(t); t = setInterval(next, 10000); };
-
         function go(i){ show(i); reset(); }
-
         btnNext.addEventListener('click', () => { next(); reset(); });
         btnPrev.addEventListener('click', () => { prev(); reset(); });
-
         c.addEventListener('mouseenter', () => clearInterval(t));
         c.addEventListener('mouseleave', reset);
-
         document.addEventListener('keydown', (e) => {
           if(e.key === 'ArrowRight') { next(); reset(); }
           if(e.key === 'ArrowLeft')  { prev(); reset(); }
         });
-
         reset();
       })();
     </script>
 
-    <!-- 
-      [AÇÃO NECESSÁRIA] Script para Rastreamento de Conversão (Clique no WhatsApp)
-      Este código envia um evento para o Google Tag Manager sempre que alguém clica
-      em um dos botões de agendamento.
-    -->
     <script>
       document.addEventListener('DOMContentLoaded', function() {
-        // Seleciona todos os links de agendamento que começam com 'cta-whatsapp-'
         const ctaButtons = document.querySelectorAll('a[id^="cta-whatsapp-"]');
-        
         ctaButtons.forEach(function(button) {
           button.addEventListener('click', function() {
-            console.log('Clique no WhatsApp rastreado!'); // Para teste no console do navegador
+            console.log('Clique no WhatsApp rastreado!');
             window.dataLayer = window.dataLayer || [];
             window.dataLayer.push({
               'event': 'whatsapp_click',
@@ -327,6 +363,96 @@
           });
         });
       });
+    </script>
+    
+    <!-- Gemini AI Assistant Feature Script -->
+    <script>
+      (function() {
+          const submitButton = document.getElementById('gemini-submit');
+          const promptInput = document.getElementById('gemini-prompt');
+          const resultContainer = document.getElementById('gemini-result-container');
+          const resultDiv = document.getElementById('gemini-result');
+          const loader = document.getElementById('gemini-loader');
+
+          if (!submitButton || !promptInput || !resultContainer || !loader) {
+              return;
+          }
+
+          const callGeminiApi = async (prompt, retries = 3, delay = 1000) => {
+              const apiKey = ""; 
+              const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+              const systemPrompt = `Você é um assistente virtual da clínica veterinária DSR VET. Sua função é fornecer informações gerais e educativas sobre cuidados com cães, gatos e aves.
+              Você NUNCA deve fornecer diagnósticos, prescrever tratamentos ou substituir uma consulta com um veterinário.
+              SEMPRE, ao final de cada resposta, inclua a seguinte frase em uma nova linha e em negrito:
+              '**Esta é uma informação geral e não substitui a avaliação de um médico veterinário. Para um diagnóstico preciso, agende uma consulta na DSR VET.**'
+              Responda de forma clara, amigável e concisa em português do Brasil.`;
+
+              const payload = {
+                  systemInstruction: { parts: [{ text: systemPrompt }] },
+                  contents: [{ parts: [{ text: prompt }] }],
+              };
+
+              try {
+                  const response = await fetch(apiUrl, {
+                      method: 'POST',
+                      headers: { 'Content-Type': 'application/json' },
+                      body: JSON.stringify(payload)
+                  });
+
+                  if (!response.ok) {
+                      if (response.status === 429 && retries > 0) {
+                          await new Promise(resolve => setTimeout(resolve, delay));
+                          return callGeminiApi(prompt, retries - 1, delay * 2);
+                      }
+                      throw new Error(`API Error: ${response.status} ${response.statusText}`);
+                  }
+
+                  const result = await response.json();
+                  const candidate = result.candidates?.[0];
+
+                  if (candidate && candidate.content?.parts?.[0]?.text) {
+                      return candidate.content.parts[0].text;
+                  } else {
+                      return "Desculpe, não consegui processar sua pergunta. Tente novamente.";
+                  }
+              } catch (error) {
+                  console.error('Erro ao chamar a API Gemini:', error);
+                  if (retries > 0) {
+                      await new Promise(resolve => setTimeout(resolve, delay));
+                      return callGeminiApi(prompt, retries - 1, delay * 2);
+                  }
+                  return "Ocorreu um erro ao buscar a resposta. Por favor, verifique sua conexão e tente novamente.";
+              }
+          };
+
+          submitButton.addEventListener('click', async () => {
+              const userPrompt = promptInput.value.trim();
+              if (!userPrompt) {
+                  promptInput.style.borderColor = 'red';
+                  setTimeout(() => {
+                      promptInput.style.borderColor = '#ccc';
+                  }, 2000);
+                  return;
+              }
+
+              loader.style.display = 'block';
+              resultContainer.style.display = 'none';
+              submitButton.disabled = true;
+              submitButton.textContent = 'Pensando...';
+
+              const responseText = await callGeminiApi(userPrompt);
+
+              resultDiv.textContent = responseText;
+              resultContainer.style.display = 'block';
+
+              loader.style.display = 'none';
+              submitButton.disabled = false;
+              submitButton.textContent = '✨ Perguntar à IA';
+              
+              resultContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          });
+      })();
     </script>
 </body>
 </html>
