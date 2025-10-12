@@ -14,14 +14,15 @@
 
     <meta name="description" content="Clínica Veterinária DSR VET em Brasília - DF. Atendimento especializado para cães, gatos e aves. Consultas, exames, cirurgias e internação 24h. Agende agora!" />
 
+    <!-- [CORRIGIDO] CSP ainda mais flexível para garantir a comunicação com o Google Ads -->
     <meta http-equiv="Content-Security-Policy" content="
       default-src 'self'; 
-      script-src 'self' 'unsafe-inline' https://*.googletagmanager.com https://*.google-analytics.com https://generativelanguage.googleapis.com;
-      connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.google.com https://generativelanguage.googleapis.com;
+      script-src 'self' 'unsafe-inline' https://*.googletagmanager.com https://*.google-analytics.com https://*.google.com https://googleads.g.doubleclick.net https://*.googlesyndication.com;
+      connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.google.com https://*.doubleclick.net;
       img-src 'self' data: https:;
       style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;
       font-src 'self' https://cdnjs.cloudflare.com;
-      frame-src 'self' https://*.google.com https://tagassistant.google.com;
+      frame-src 'self' https://*.google.com https://tagassistant.google.com https://*.doubleclick.net;
     ">
 
     <title>DSR VET - Clínica Veterinária em Brasília - DF</title>
@@ -99,79 +100,6 @@
       .social a{ color:var(--roxo); font-weight:700; text-decoration:none; font-size: 1.1rem;}
       .mapa{ margin-top:2rem; border-radius:12px; overflow:hidden; }
       footer{ text-align:center; margin-top:2rem; font-size:.9rem; color:#555; }
-      
-      /* Gemini Feature Styles */
-      .gemini-feature {
-          background-color: #f8f5fc;
-          border: 1px solid #e0d1f0;
-          padding: 2rem;
-          border-radius: 12px;
-          margin-top: 2.5rem;
-          margin-bottom: 2.5rem;
-          text-align: center;
-      }
-      .gemini-feature h2 {
-          color: var(--roxo);
-          padding-top: 0;
-      }
-      .gemini-feature .subtitulo{
-          font-size: 1rem;
-          color: #555;
-          max-width: 600px;
-          margin: 0.5rem auto 1.5rem;
-      }
-      #gemini-prompt {
-          width: 100%;
-          max-width: 600px;
-          height: 100px;
-          padding: 1rem;
-          border-radius: 8px;
-          border: 1px solid #ccc;
-          font-family: inherit;
-          font-size: 1rem;
-          margin-bottom: 1rem;
-          resize: vertical;
-          transition: border-color 0.3s;
-      }
-      #gemini-submit {
-          border: none;
-          cursor: pointer;
-          font-size: 1rem;
-      }
-      #gemini-submit:disabled {
-          background-color: #999;
-          cursor: not-allowed;
-      }
-      #gemini-result-container {
-          margin-top: 2rem;
-          padding: 1.5rem;
-          background: #fff;
-          border-radius: 8px;
-          text-align: left;
-          border: 1px solid #eee;
-          max-width: 700px;
-          margin-left: auto;
-          margin-right: auto;
-          white-space: pre-wrap;
-          word-wrap: break-word;
-      }
-      #gemini-result-container h3 {
-          margin-top: 0;
-          color: #111;
-      }
-      .loader {
-          border: 5px solid #f3f3f3;
-          border-radius: 50%;
-          border-top: 5px solid var(--roxo);
-          width: 40px;
-          height: 40px;
-          animation: spin 1s linear infinite;
-          margin: 1rem auto;
-      }
-      @keyframes spin {
-          0% { transform: rotate(0deg); }
-          100% { transform: rotate(360deg); }
-      }
     </style>
 </head>
 <body>
@@ -225,26 +153,6 @@
               </a>
             </div>
           </div>
-        </div>
-        
-        <!-- Gemini Feature: Tire suas Dúvidas -->
-        <div class="gemini-feature">
-            <h2><i class="fas fa-robot"></i> Tem alguma dúvida sobre seu pet?</h2>
-            <p class="subtitulo">Use nossa assistente virtual para obter informações gerais sobre cuidados. Lembre-se, ela não substitui a avaliação de um veterinário.</p>
-            <textarea id="gemini-prompt" placeholder="Ex: Qual a melhor ração para um filhote de cachorro?"></textarea>
-            <div class="cta">
-                <button id="gemini-submit" class="btn-cta">
-                    ✨ Perguntar à IA
-                </button>
-            </div>
-            <div id="gemini-loader" style="display: none; text-align: center; margin-top: 1.5rem;">
-                <div class="loader"></div>
-                <p>Buscando a melhor resposta...</p>
-            </div>
-            <div id="gemini-result-container" style="display: none;">
-                <h3>Resposta da Assistente:</h3>
-                <div id="gemini-result"></div>
-            </div>
         </div>
 
         <div class="estrutura">
@@ -348,6 +256,7 @@
       })();
     </script>
 
+    <!-- Script para rastreamento de clique no WhatsApp -->
     <script>
       document.addEventListener('DOMContentLoaded', function() {
         const ctaButtons = document.querySelectorAll('a[id^="cta-whatsapp-"]');
@@ -364,111 +273,6 @@
           });
         });
       });
-    </script>
-    
-    <!-- [CORRIGIDO] Gemini AI Assistant Feature Script com tratamento de erro melhorado -->
-    <script>
-      (function() {
-          const submitButton = document.getElementById('gemini-submit');
-          const promptInput = document.getElementById('gemini-prompt');
-          const resultContainer = document.getElementById('gemini-result-container');
-          const resultDiv = document.getElementById('gemini-result');
-          const loader = document.getElementById('gemini-loader');
-
-          if (!submitButton || !promptInput || !resultContainer || !loader) {
-              return;
-          }
-
-          const callGeminiApi = async (prompt) => {
-              const maxRetries = 3;
-              let delay = 1000;
-              let lastError = null;
-
-              for (let attempt = 1; attempt <= maxRetries; attempt++) {
-                  try {
-                      const apiKey = ""; 
-                      const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
-
-                      const systemPrompt = `Você é um assistente virtual da clínica veterinária DSR VET. Sua função é fornecer informações gerais e educativas sobre cuidados com cães, gatos e aves.
-                      Você NUNCA deve fornecer diagnósticos, prescrever tratamentos ou substituir uma consulta com um veterinário.
-                      SEMPRE, ao final de cada resposta, inclua a seguinte frase em uma nova linha e em negrito:
-                      '**Esta é uma informação geral e não substitui a avaliação de um médico veterinário. Para um diagnóstico preciso, agende uma consulta na DSR VET.**'
-                      Responda de forma clara, amigável e concisa em português do Brasil.`;
-
-                      const payload = {
-                          systemInstruction: { parts: [{ text: systemPrompt }] },
-                          contents: [{ role: "user", parts: [{ text: prompt }] }],
-                      };
-                      
-                      const response = await fetch(apiUrl, {
-                          method: 'POST',
-                          headers: { 'Content-Type': 'application/json' },
-                          body: JSON.stringify(payload)
-                      });
-
-                      if (!response.ok) {
-                          let errorBody = 'Não foi possível ler o corpo do erro.';
-                          try {
-                              errorBody = await response.text();
-                          } catch (e) { /* ignora */ }
-                          throw new Error(`Erro na API ${response.status}: ${errorBody}`);
-                      }
-
-                      const result = await response.json();
-                      const candidate = result.candidates?.[0];
-
-                      if (candidate && candidate.content?.parts?.[0]?.text) {
-                          return candidate.content.parts[0].text; // Sucesso
-                      } else {
-                           if (result.promptFeedback && result.promptFeedback.blockReason) {
-                                const reason = result.promptFeedback.blockReason;
-                                console.error('Prompt bloqueado pela API:', reason);
-                                return `Sua pergunta não pôde ser processada (${reason}). Por favor, reformule-a.`;
-                           }
-                           console.error('Resposta da API sem conteúdo:', JSON.stringify(result));
-                           return "Desculpe, a IA retornou uma resposta vazia. Tente perguntar de outra forma.";
-                      }
-                  } catch (error) {
-                      console.error(`Tentativa ${attempt} falhou:`, error);
-                      lastError = error;
-                      if (attempt < maxRetries) {
-                          await new Promise(resolve => setTimeout(resolve, delay));
-                          delay *= 2; // Backoff exponencial
-                      }
-                  }
-              }
-              
-              console.error('Todas as tentativas falharam.', lastError);
-              return `Ocorreu um erro ao buscar a resposta. Por favor, verifique sua conexão e tente novamente. Detalhe: ${lastError.message || 'Falha na comunicação com o servidor.'}`;
-          };
-
-          submitButton.addEventListener('click', async () => {
-              const userPrompt = promptInput.value.trim();
-              if (!userPrompt) {
-                  promptInput.style.borderColor = 'red';
-                  setTimeout(() => {
-                      promptInput.style.borderColor = '#ccc';
-                  }, 2000);
-                  return;
-              }
-
-              loader.style.display = 'block';
-              resultContainer.style.display = 'none';
-              submitButton.disabled = true;
-              submitButton.textContent = 'Pensando...';
-
-              const responseText = await callGeminiApi(userPrompt);
-
-              resultDiv.textContent = responseText;
-              resultContainer.style.display = 'block';
-
-              loader.style.display = 'none';
-              submitButton.disabled = false;
-              submitButton.textContent = '✨ Perguntar à IA';
-              
-              resultContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          });
-      })();
     </script>
 </body>
 </html>
