@@ -1,6 +1,19 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+    <!-- [IMPORTANTE] Script de Consentimento - Deve vir ANTES do GTM -->
+    <script>
+      // Define o estado de consentimento padrão como 'negado'
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', {
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'analytics_storage': 'denied'
+      });
+    </script>
+
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -14,7 +27,6 @@
 
     <meta name="description" content="Clínica Veterinária DSR VET em Brasília - DF. Atendimento especializado para cães, gatos e aves. Consultas, exames, cirurgias e internação 24h. Agende agora!" />
 
-    <!-- [CORRIGIDO] CSP ainda mais flexível para garantir a comunicação com o Google Ads -->
     <meta http-equiv="Content-Security-Policy" content="
       default-src 'self'; 
       script-src 'self' 'unsafe-inline' https://*.googletagmanager.com https://*.google-analytics.com https://*.google.com https://googleads.g.doubleclick.net https://*.googlesyndication.com;
@@ -98,8 +110,65 @@
       .galeria img{ width:100%; max-width:300px; border-radius:12px; display:block; object-fit: cover; }
       .social{ text-align:center; margin-top:2rem; }
       .social a{ color:var(--roxo); font-weight:700; text-decoration:none; font-size: 1.1rem;}
-      .mapa{ margin-top:2rem; border-radius:12px; overflow:hidden; }
+      .mapa{
+        position: relative;
+        margin-top:2rem;
+        border-radius:12px;
+        overflow:hidden;
+      }
       footer{ text-align:center; margin-top:2rem; font-size:.9rem; color:#555; }
+      
+      /* Estilos do Banner de Consentimento */
+      #cookie-consent-banner {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #222;
+        color: #fff;
+        padding: 1.5rem;
+        box-shadow: 0 -4px 12px rgba(0,0,0,.2);
+        z-index: 9999;
+        display: none; /* Começa escondido */
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+        text-align: center;
+      }
+      #cookie-consent-banner p {
+        margin: 0;
+        flex-grow: 1;
+        max-width: 800px;
+        font-size: 0.95rem;
+      }
+      #cookie-consent-banner .buttons {
+        display: flex;
+        gap: 1rem;
+        flex-shrink: 0;
+      }
+      .consent-btn {
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 700;
+        transition: background-color .3s;
+      }
+      .btn-accept {
+        background-color: var(--roxo);
+        color: #fff;
+      }
+      .btn-accept:hover {
+        background-color: #360060;
+      }
+      .btn-reject {
+        background-color: #555;
+        color: #fff;
+      }
+      .btn-reject:hover {
+        background-color: #444;
+      }
     </style>
 </head>
 <body>
@@ -209,6 +278,7 @@
         </div>
 
         <div class="mapa">
+          <a href="https://www.google.com/maps/place/DSR+VET/@-15.9128397,-48.0543198,17z" target="_blank" rel="noopener noreferrer" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 1;" aria-label="Abrir localização no Google Maps"></a>
           <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15306.607525167425!2d-48.0543198!3d-15.9128397!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935a333f7d1b1d3f%3A0xe4294ea607ce9c75!2sQuadra%20601%20Conjunto%2001%20-%20Recanto%20das%20Emas%2C%20Bras%C3%ADlia%20-%20DF%2C%2072640-101!5e0!3m2!1spt-BR!2sbr!4v1720973000000" width="100%" height="300" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
       </main>
@@ -216,6 +286,15 @@
       <footer>
         <p><strong>Endereço:</strong> Quadra 601 conjunto 01, casa 22b, Recanto das Emas, Brasília - DF, CEP 72640101</p>
       </footer>
+    </div>
+    
+    <!-- [NOVO] Banner de Consentimento de Cookies -->
+    <div id="cookie-consent-banner">
+      <p>Utilizamos cookies para otimizar a sua experiência e para fins de publicidade. Ao continuar a navegar, você concorda com o uso de cookies.</p>
+      <div class="buttons">
+        <button id="btn-accept-consent" class="consent-btn btn-accept">Aceitar</button>
+        <button id="btn-reject-consent" class="consent-btn btn-reject">Rejeitar</button>
+      </div>
     </div>
 
     <script>
@@ -272,6 +351,37 @@
             });
           });
         });
+      });
+    </script>
+    
+    <!-- [NOVO] Lógica do Banner de Consentimento -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const banner = document.getElementById('cookie-consent-banner');
+        const acceptBtn = document.getElementById('btn-accept-consent');
+        const rejectBtn = document.getElementById('btn-reject-consent');
+
+        function setConsent(consentState) {
+          const consent = {
+            'ad_storage': consentState,
+            'ad_user_data': consentState,
+            'ad_personalization': consentState,
+            'analytics_storage': consentState
+          };
+          gtag('consent', 'update', consent);
+          // Armazena a escolha para não mostrar o banner novamente
+          document.cookie = `cookie_consent=${consentState}; path=/; max-age=31536000`; // Expira em 1 ano
+          banner.style.display = 'none';
+        }
+
+        acceptBtn.addEventListener('click', () => setConsent('granted'));
+        rejectBtn.addEventListener('click', () => setConsent('denied'));
+
+        // Verifica se o consentimento já foi dado
+        const hasConsent = document.cookie.split(';').some((item) => item.trim().startsWith('cookie_consent='));
+        if (!hasConsent) {
+          banner.style.display = 'flex';
+        }
       });
     </script>
 </body>
