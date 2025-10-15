@@ -27,14 +27,15 @@
 
     <meta name="description" content="Clínica Veterinária DSR VET em Brasília - DF. Atendimento especializado para cães, gatos e aves. Consultas, exames, cirurgias e internação 24h. Agende agora!" />
 
+    <!-- Política de Segurança de Conteúdo (CSP) - Versão Definitiva e Permissiva para o Google -->
     <meta http-equiv="Content-Security-Policy" content="
       default-src 'self'; 
-      script-src 'self' 'unsafe-inline' https://*.googletagmanager.com https://*.google-analytics.com https://*.google.com https://googleads.g.doubleclick.net https://*.googlesyndication.com https://generativelanguage.googleapis.com;
-      connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.google.com https://*.doubleclick.net https://generativelanguage.googleapis.com;
+      script-src 'self' 'unsafe-inline' https:;
+      connect-src 'self' https:;
       img-src 'self' data: https:;
-      style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;
-      font-src 'self' https://cdnjs.cloudflare.com;
-      frame-src 'self' https://*.google.com https://tagassistant.google.com https://*.doubleclick.net;
+      style-src 'self' 'unsafe-inline' https:;
+      font-src 'self' https:;
+      frame-src 'self' https:;
     ">
 
     <title>DSR VET - Clínica Veterinária em Brasília - DF</title>
@@ -118,6 +119,74 @@
       }
       footer{ text-align:center; margin-top:2rem; font-size:.9rem; color:#555; }
       
+      /* Gemini Feature Styles */
+      .gemini-feature {
+          background-color: #f8f5fc;
+          border: 1px solid #e0d1f0;
+          padding: 2rem;
+          border-radius: 12px;
+          margin-top: 2.5rem;
+          margin-bottom: 2.5rem;
+          text-align: center;
+      }
+      .gemini-feature h2 {
+          color: var(--roxo);
+          padding-top: 0;
+      }
+      .gemini-feature .subtitulo{
+          font-size: 1rem;
+          color: #555;
+          max-width: 600px;
+          margin: 0.5rem auto 1.5rem;
+      }
+      #gemini-prompt {
+          width: 100%;
+          max-width: 600px;
+          height: 100px;
+          padding: 1rem;
+          border-radius: 8px;
+          border: 1px solid #ccc;
+          font-family: inherit;
+          font-size: 1rem;
+          margin-bottom: 1rem;
+          resize: vertical;
+      }
+      #gemini-submit {
+          border: none;
+          cursor: pointer;
+          font-size: 1rem;
+      }
+      #gemini-submit:disabled {
+          background-color: #999;
+          cursor: not-allowed;
+      }
+      #gemini-result-container {
+          margin-top: 2rem;
+          padding: 1.5rem;
+          background: #fff;
+          border-radius: 8px;
+          text-align: left;
+          border: 1px solid #eee;
+          max-width: 700px;
+          margin-left: auto;
+          margin-right: auto;
+          white-space: pre-wrap;
+          word-wrap: break-word;
+      }
+      .loader {
+          border: 5px solid #f3f3f3;
+          border-radius: 50%;
+          border-top: 5px solid var(--roxo);
+          width: 40px;
+          height: 40px;
+          animation: spin 1s linear infinite;
+          margin: 1rem auto;
+      }
+      @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+      }
+
       /* Estilos do Banner de Consentimento */
       #cookie-consent-banner {
         position: fixed;
@@ -145,35 +214,6 @@
       .btn-accept:hover { background-color: #360060; }
       .btn-reject { background-color: #555; color: #fff; }
       .btn-reject:hover { background-color: #444; }
-
-      /* [NOVO] Estilos da Funcionalidade IA */
-      .gemini-feature {
-          background-color: #f8f5fc;
-          border: 1px solid #e0d1f0;
-          padding: 2rem;
-          border-radius: 12px;
-          margin: 2.5rem 0;
-          text-align: center;
-      }
-      .gemini-feature h2 { color: var(--roxo); padding-top: 0; }
-      .gemini-feature .subtitulo{ font-size: 1rem; color: #555; max-width: 600px; margin: 0.5rem auto 1.5rem; }
-      #gemini-prompt {
-          width: 100%; max-width: 600px; height: 100px; padding: 1rem; border-radius: 8px; border: 1px solid #ccc;
-          font-family: inherit; font-size: 1rem; margin-bottom: 1rem; resize: vertical;
-      }
-      #gemini-submit { border: none; cursor: pointer; font-size: 1rem; }
-      #gemini-submit:disabled { background-color: #999; cursor: not-allowed; }
-      #gemini-result-container {
-          margin-top: 2rem; padding: 1.5rem; background: #fff; border-radius: 8px; text-align: left;
-          border: 1px solid #eee; max-width: 700px; margin-left: auto; margin-right: auto;
-          white-space: pre-wrap; word-wrap: break-word;
-      }
-      #gemini-result-container h3 { margin-top: 0; color: #111; }
-      .loader {
-          border: 5px solid #f3f3f3; border-radius: 50%; border-top: 5px solid var(--roxo);
-          width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 1rem auto;
-      }
-      @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
@@ -228,11 +268,11 @@
             </div>
           </div>
         </div>
-
-        <!-- [NOVO] Funcionalidade IA Gemini -->
+        
+        <!-- Gemini Feature: Tire as suas Dúvidas -->
         <div class="gemini-feature">
-            <h2><i class="fas fa-robot"></i> Tem alguma dúvida sobre seu pet?</h2>
-            <p class="subtitulo">Use nossa assistente virtual para obter informações gerais sobre cuidados. Lembre-se, ela não substitui a avaliação de um veterinário.</p>
+            <h2><i class="fas fa-robot"></i> Tem alguma dúvida sobre o seu pet?</h2>
+            <p class="subtitulo">Use a nossa assistente virtual para obter informações gerais sobre cuidados. Lembre-se, ela não substitui a avaliação de um veterinário.</p>
             <textarea id="gemini-prompt" placeholder="Ex: Qual a melhor ração para um filhote de cachorro?"></textarea>
             <div class="cta">
                 <button id="gemini-submit" class="btn-cta">
@@ -241,7 +281,7 @@
             </div>
             <div id="gemini-loader" style="display: none; text-align: center; margin-top: 1.5rem;">
                 <div class="loader"></div>
-                <p>Buscando a melhor resposta...</p>
+                <p>A buscar a melhor resposta...</p>
             </div>
             <div id="gemini-result-container" style="display: none;">
                 <h3>Resposta da Assistente:</h3>
@@ -281,10 +321,10 @@
           <button class="nav prev" aria-label="Foto anterior">❮</button>
           <div class="slides">
             <img src="https://i.postimg.cc/hhWYtqvs/Whats-App-Image-2025-08-10-at-12-10-20.jpg" alt="Veterinária da DSR VET com um cachorro" class="active" loading="lazy">
-            <img src="https://i.postimg.cc/DfJy0dm4/Whats-App-Image-2025-08-10-at-12-07-34-2.jpg" alt="Veterinária cuidando de um pet" loading="lazy">
+            <img src="https://i.postimg.cc/DfJy0dm4/Whats-App-Image-2025-08-10-at-12-07-34-2.jpg" alt="Veterinária a cuidar de um pet" loading="lazy">
             <img src="https://i.postimg.cc/9X6X7Rq8/Whats-App-Image-2025-08-10-at-12-07-34-1.jpg" alt="Veterinária com um animal no colo" loading="lazy">
             <img src="https://i.postimg.cc/qM2JXJsk/Whats-App-Image-2025-08-10-at-12-07-34.jpg" alt="Atendimento carinhoso na DSR VET" loading="lazy">
-            <img src="https://i.postimg.cc/4d0MjcTr/Whats-App-Image-2025-08-01-at-19-56-45.jpg" alt="Equipe da DSR VET" loading="lazy">
+            <img src="https://i.postimg.cc/4d0MjcTr/Whats-App-Image-2025-08-01-at-19-56-45.jpg" alt="Equipa da DSR VET" loading="lazy">
           </div>
           <button class="nav next" aria-label="Próxima foto">❯</button>
           <div class="dots"></div>
@@ -350,9 +390,8 @@
         const ctaButtons = document.querySelectorAll('a[id^="cta-whatsapp-"]');
         ctaButtons.forEach(function(button) {
           button.addEventListener('click', function() {
-            console.log('Clique no WhatsApp rastreado!');
             window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push({ 'event': 'whatsapp_click', 'event_category': 'Contato', 'event_action': 'Clique', 'event_label': 'Agendamento WhatsApp' });
+            window.dataLayer.push({ 'event': 'whatsapp_click' });
           });
         });
       });
@@ -375,83 +414,79 @@
         if (!hasConsent) { banner.style.display = 'flex'; }
       });
     </script>
-
-    <!-- [NOVO] Lógica da IA Gemini -->
+    
+    <!-- Script da Assistente IA Gemini -->
     <script>
-      document.addEventListener('DOMContentLoaded', function() {
+      (function() {
         const submitButton = document.getElementById('gemini-submit');
         const promptInput = document.getElementById('gemini-prompt');
         const resultContainer = document.getElementById('gemini-result-container');
         const resultDiv = document.getElementById('gemini-result');
         const loader = document.getElementById('gemini-loader');
 
-        // Chave de API inserida
         const apiKey = "AIzaSyCyfNoNC2MP-iXrjxf7R-mg1R5rw_FD-AU";
-
         const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
-        
-        async function callGeminiApi() {
-            const prompt = promptInput.value;
-            if (!prompt.trim() || apiKey === "SUA_NOVA_CHAVE_API_VAI_AQUI") {
-                resultDiv.textContent = "Por favor, insira uma pergunta e certifique-se de que a chave de API foi configurada corretamente no código.";
-                resultContainer.style.display = 'block';
-                return;
-            }
 
-            submitButton.disabled = true;
-            loader.style.display = 'block';
-            resultContainer.style.display = 'none';
+        const systemPrompt = `Você é uma assistente virtual da clínica veterinária DSR VET. O seu nome é VET-IA. Forneça respostas úteis e informativas sobre cuidados gerais com animais de estimação. Nunca forneça diagnósticos ou prescreva tratamentos. Termine SEMPRE as suas respostas com a seguinte frase, exatamente como está escrita: 'Para uma avaliação completa e um diagnóstico preciso, é fundamental agendar uma consulta com os nossos veterinários na DSR VET. Estaremos aqui para ajudar!'`;
 
-            // [CORREÇÃO] Instrução do sistema atualizada para sempre indicar a clínica
-            const systemPrompt = "Você é um assistente virtual da clínica DSR VET. Sua principal função é fornecer informações gerais sobre cuidados com pets e incentivar o usuário a marcar uma consulta. Responda de forma amigável e concisa (máximo 3 parágrafos). NUNCA forneça diagnósticos ou prescreva tratamentos. SEMPRE termine sua resposta com a seguinte frase obrigatória: 'Para um diagnóstico preciso e orientação profissional, agende uma consulta na DSR VET. Cuidamos com carinho do seu pet!'";
+        async function callGeminiApi(prompt) {
+          loader.style.display = 'block';
+          resultContainer.style.display = 'none';
+          submitButton.disabled = true;
 
+          try {
             const payload = {
-                contents: [{
-                    role: "user",
-                    parts: [{ text: prompt }]
-                }],
-                systemInstruction: {
-                    parts: [{ text: systemPrompt }]
-                },
-                generationConfig: {
-                    temperature: 0.7,
-                    maxOutputTokens: 800,
-                }
+              contents: [{
+                  parts: [{ text: prompt }]
+              }],
+              systemInstruction: {
+                parts: [{ text: systemPrompt }]
+              },
+              generationConfig: {
+                maxOutputTokens: 8192,
+              }
             };
-            
-            try {
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
 
-                if (!response.ok) {
-                    const errorData = await response.json();
-                    throw new Error(`Erro na API ${response.status}: ${JSON.stringify(errorData, null, 2)}`);
-                }
+            const response = await fetch(apiUrl, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload)
+            });
 
-                const result = await response.json();
-                const candidate = result.candidates?.[0];
-
-                if (candidate && candidate.content?.parts?.[0]?.text) {
-                    resultDiv.textContent = candidate.content.parts[0].text;
-                } else {
-                    resultDiv.textContent = "Não foi possível obter uma resposta. A resposta da API estava vazia ou em um formato inesperado.";
-                }
-
-            } catch (error) {
-                console.error("Falha ao chamar a API Gemini:", error);
-                resultDiv.textContent = `Ocorreu um erro ao buscar a resposta. Por favor, verifique sua conexão e tente novamente.\n\nDetalhe: ${error.message}`;
-            } finally {
-                submitButton.disabled = false;
-                loader.style.display = 'none';
-                resultContainer.style.display = 'block';
+            if (!response.ok) {
+              const errorBody = await response.json();
+              throw new Error(`Erro na API ${response.status}: ${JSON.stringify(errorBody, null, 2)}`);
             }
+            
+            const result = await response.json();
+            
+            let text = 'Não foi possível obter uma resposta. Por favor, tente novamente.';
+            if (result.candidates && result.candidates.length > 0 && result.candidates[0].content?.parts?.[0]?.text) {
+              text = result.candidates[0].content.parts[0].text;
+            } else if (result.candidates && result.candidates[0].finishReason === 'SAFETY') {
+                text = 'A sua pergunta não pôde ser respondida devido às nossas diretrizes de segurança. Por favor, reformule a sua pergunta.';
+            }
+
+            return text;
+
+          } catch (error) {
+            console.error("Erro ao chamar a API Gemini:", error);
+            return `Ocorreu um erro ao buscar a resposta. Por favor, verifique a sua conexão e tente novamente.\nDetalhe: ${error.message}`;
+          } finally {
+            loader.style.display = 'none';
+            submitButton.disabled = false;
+          }
         }
 
-        submitButton.addEventListener('click', callGeminiApi);
-      });
+        submitButton.addEventListener('click', async () => {
+          const userPrompt = promptInput.value.trim();
+          if (userPrompt) {
+            const responseText = await callGeminiApi(userPrompt);
+            resultDiv.textContent = responseText;
+            resultContainer.style.display = 'block';
+          }
+        });
+      })();
     </script>
 </body>
 </html>
