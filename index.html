@@ -384,14 +384,27 @@
         reset();
       })();
     </script>
-
+    
+    <!-- [SOLUÇÃO DEFINITIVA] Script de Rastreamento de Conversão -->
     <script>
       document.addEventListener('DOMContentLoaded', function() {
         const ctaButtons = document.querySelectorAll('a[id^="cta-whatsapp-"]');
+        // ID da sua conversão do Google Ads (AW-ID_DA_CONTA/RÓTULO_DA_CONVERSÃO)
+        const conversionId = 'AW-17475784677/7_hNCP6T9agbEOWfjY1B';
+
         ctaButtons.forEach(function(button) {
           button.addEventListener('click', function() {
+            // Método 1: Evento personalizado para o GTM (mantido como boa prática e para análise)
             window.dataLayer = window.dataLayer || [];
             window.dataLayer.push({ 'event': 'whatsapp_click' });
+
+            // Método 2: Chamada direta para o Google Ads (solução definitiva para o rastreamento de conversões)
+            if (typeof gtag === 'function') {
+              gtag('event', 'conversion', { 'send_to': conversionId });
+              console.log('Sinal de conversão enviado diretamente para o Google Ads:', conversionId);
+            } else {
+              console.error('A função gtag não foi encontrada. A conversão direta não pôde ser enviada.');
+            }
           });
         });
       });
@@ -491,3 +504,4 @@
 </body>
 </html>
 
+ 
