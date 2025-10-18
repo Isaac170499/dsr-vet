@@ -8,8 +8,6 @@
       function gtag(){dataLayer.push(arguments);}
       gtag('consent', 'default', {
         'ad_storage': 'denied',
-        'ad_user_data': 'denied',
-        'ad_personalization': 'denied',
         'analytics_storage': 'denied'
       });
     </script>
@@ -22,57 +20,169 @@
     })(window,document,'script','dataLayer','GTM-NKKB2XWH');</script>
     <!-- End Google Tag Manager -->
 
+    <!-- Global site tag (gtag.js) - Base para o GTM -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17475784677"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17475784677');
+    </script>
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <meta name="description" content="Clínica Veterinária DSR VET em Brasília - DF. Atendimento especializado para cães, gatos e aves. Consultas, exames, cirurgias e internação 24h. Agende agora!" />
-
-    <!-- Política de Segurança de Conteúdo (CSP) - Versão Definitiva e Permissiva para o Google -->
-    <meta http-equiv="Content-Security-Policy" content="
-      default-src 'self'; 
-      script-src 'self' 'unsafe-inline' https:;
-      connect-src 'self' https:;
-      img-src 'self' data: https:;
-      style-src 'self' 'unsafe-inline' https:;
-      font-src 'self' https:;
-      frame-src 'self' https:;
-    ">
-
+    <meta name="description" content="Clínica Veterinária DSR VET em Brasília - DF. Atendimento especializado para cães, gatos e aves. Consultas, exames, cirurgias e internação 24h." />
+    
     <title>DSR VET - Clínica Veterinária em Brasília - DF</title>
 
     <link rel="icon" type="image/png" href="https://i.postimg.cc/x1kjf69j/logo-dsrvet-transparente.png" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" xintegrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
-      :root { --roxo:#4B0082; }
-      * { box-sizing: border-box; }
-      body{
-        margin:0;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        color:#222;
+      :root {
+        --roxo: #4B0082;
+        --whatsapp-green: #25D366;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        color: #333;
         background: url('https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
         background-size: cover;
       }
-      .overlay{
-        background-color: rgba(255,255,255,.8);
-        min-height:100vh;
-        padding:2rem 1rem;
+      .overlay {
+        background-color: rgba(255, 255, 255, 0.85);
+        min-height: 100vh;
+        padding: 2rem 1rem;
       }
-      header{ text-align:center; margin-bottom:1.25rem; }
-      header img{ width:200px; height: auto; max-width: 100%; margin-bottom:.75rem; }
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        background: #fff;
+        padding: clamp(1.5rem, 5vw, 2.5rem);
+        border-radius: 16px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      }
+      header {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+      header img {
+        width: 180px;
+        height: auto;
+        margin-bottom: 1rem;
+      }
+      h1 {
+        font-size: clamp(1.8rem, 5vw, 2.5rem);
+        color: var(--roxo);
+        font-weight: 700;
+      }
+      .subtitulo {
+        font-size: 1.1rem;
+        color: #555;
+        margin-top: 0.5rem;
+      }
+      h2 {
+        font-size: 1.75rem;
+        color: #111;
+        border-bottom: 2px solid var(--roxo);
+        padding-bottom: 0.5rem;
+        margin-bottom: 1.5rem;
+        margin-top: 2rem;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2.5rem;
+      }
+      ul {
+        list-style: none;
+      }
+      li {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+        font-size: 1.05rem;
+      }
+      li i {
+        color: var(--roxo);
+        font-size: 1.2rem;
+        width: 25px;
+        text-align: center;
+      }
+      .estrutura .grupo {
+        font-weight: 700;
+        color: var(--roxo);
+        margin: 2rem 0 1rem;
+        font-size: 1.2rem;
+      }
+      .galeria {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+      .galeria img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
+      }
+      .galeria img:hover {
+        transform: scale(1.05);
+      }
+      .social {
+        text-align: center;
+        margin-top: 2.5rem;
+      }
+      .social a {
+        color: var(--roxo);
+        font-weight: 600;
+        text-decoration: none;
+        font-size: 1.2rem;
+      }
+      .social i {
+        margin-right: 0.5rem;
+      }
+      .mapa {
+        position: relative;
+        margin-top: 2.5rem;
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid #ddd;
+      }
+      footer {
+        text-align: center;
+        margin-top: 2.5rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid #eee;
+        font-size: 0.9rem;
+        color: #666;
+      }
+
+      /* Carrossel de Fotos */
       .hero-carousel{
-        max-width:900px; margin:1rem auto; border-radius:14px; overflow:hidden;
-        box-shadow:0 8px 24px rgba(0,0,0,.12); background:transparent; position:relative;
+        max-width:900px; margin: 2.5rem auto; border-radius:14px; overflow:hidden;
+        box-shadow:0 8px 24px rgba(0,0,0,.12); position:relative;
       }
-      .hero-carousel .slides{ width:100%; }
       .hero-carousel .slides img{ width:100%; height:auto; display:none; border-radius:14px; }
       .hero-carousel .slides img.active{ display:block; }
-      .hero-carousel .dots{ display:flex; gap:.5rem; justify-content:center; margin:.6rem 0 .2rem; }
+      .hero-carousel .dots{ display:flex; gap:.5rem; justify-content:center; margin-top:.8rem; }
       .hero-carousel .dots button{
-        width:8px; height:8px; border-radius:999px; border:0; background:#c9c9cf; cursor:pointer;
+        width:10px; height:10px; border-radius:50%; border:0; background:#c9c9cf; cursor:pointer;
         transition: all 0.3s ease;
       }
-      .hero-carousel .dots button.active{ background:var(--roxo); width:20px; }
+      .hero-carousel .dots button.active{ background:var(--roxo); width:25px; border-radius: 10px;}
       .hero-carousel .nav{
         position:absolute; top:50%; transform:translateY(-50%); width:42px; height:42px; border:none; border-radius:50%;
         background:rgba(0,0,0,.45); color:#fff; font-size:20px; display:flex; align-items:center; justify-content:center;
@@ -81,63 +191,55 @@
       .hero-carousel .nav:hover{ background:rgba(0,0,0,.65); }
       .hero-carousel .nav.prev{ left:10px; }
       .hero-carousel .nav.next{ right:10px; }
-      @media (max-width:640px){
-        .hero-carousel .nav{ width:36px;height:36px;font-size:18px; }
-        .hero-carousel .nav.prev{ left:6px; } .hero-carousel .nav.next{ right:6px; }
-      }
-      h1{ font-size:clamp(1.8rem, 5vw, 2.2rem); margin:.5rem 0 0; color:var(--roxo); text-align:center; }
-      .subtitulo{ font-size: 1.05rem; color:#555; margin:.25rem 0 1rem; text-align:center; }
-      .btn-cta{
-        display:inline-block; background:var(--roxo); color:#fff; padding:1rem 2rem; border-radius:10px;
-        text-decoration:none; font-weight:700; transition:.3s; box-shadow: 0 4px 12px rgba(75, 0, 130, 0.3);
-      }
-      .btn-cta:hover{ background:#360060; transform: translateY(-2px); }
-      .btn-cta i{ margin-right:.5rem; }
-      .cta{ text-align:center; margin-top:1rem; }
-      .conteudo{
-        max-width:1000px; margin:0 auto; background:#fff; padding: clamp(1rem, 5vw, 2rem);
-        border-radius:16px; box-shadow:0 4px 12px rgba(0,0,0,.1);
-      }
-      .grid{ display:flex; flex-wrap:wrap; gap:2rem; justify-content:space-between; align-items:stretch; }
-      .coluna{ flex:1 1 45%; min-width:280px; display:flex; flex-direction:column; }
-      h2{ margin:0 0 .5rem; color:#111; padding-top: 1.5rem; }
-      ul{ list-style:none; padding:0; margin:.5rem 0 0; }
-      li{ margin-bottom:.65rem; display:flex; align-items:center; }
-      li i{ color:var(--roxo); margin-right:.5rem; min-width:20px; text-align: center; }
-      .coluna .cta{ margin-top:auto; }
-      .estrutura h2{ margin:1.5rem 0 .75rem; }
-      .estrutura .grupo{ font-weight:700; color:var(--roxo); margin:.25rem 0 .75rem; }
-      .galeria{ display:flex; flex-wrap:wrap; gap:.75rem; justify-content: center; }
-      .galeria img{ width:100%; max-width:300px; border-radius:12px; display:block; object-fit: cover; }
-      .social{ text-align:center; margin-top:2rem; }
-      .social a{ color:var(--roxo); font-weight:700; text-decoration:none; font-size: 1.1rem;}
-      .mapa{
-        position: relative;
-        margin-top:2rem;
-        border-radius:12px;
-        overflow:hidden;
-      }
-      footer{ text-align:center; margin-top:2rem; font-size:.9rem; color:#555; }
       
-      /* Gemini Feature Styles */
+      /* Animação do Botão Flutuante */
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+          box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+        }
+        70% {
+          transform: scale(1);
+          box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+        }
+        100% {
+          transform: scale(1);
+          box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+        }
+      }
+
+      /* Botão Flutuante do WhatsApp */
+      .floating-wpp {
+        position: fixed;
+        bottom: 25px;
+        right: 25px;
+        width: 65px;
+        height: 65px;
+        background-color: var(--whatsapp-green);
+        color: #FFF;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 32px;
+        box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+        z-index: 1000;
+        text-decoration: none;
+        animation: pulse 2s infinite;
+      }
+      .floating-wpp:hover {
+        animation-play-state: paused;
+        transform: scale(1.1);
+      }
+
+      /* Funcionalidade IA Gemini */
       .gemini-feature {
           background-color: #f8f5fc;
           border: 1px solid #e0d1f0;
           padding: 2rem;
           border-radius: 12px;
           margin-top: 2.5rem;
-          margin-bottom: 2.5rem;
           text-align: center;
-      }
-      .gemini-feature h2 {
-          color: var(--roxo);
-          padding-top: 0;
-      }
-      .gemini-feature .subtitulo{
-          font-size: 1rem;
-          color: #555;
-          max-width: 600px;
-          margin: 0.5rem auto 1.5rem;
       }
       #gemini-prompt {
           width: 100%;
@@ -151,15 +253,11 @@
           margin-bottom: 1rem;
           resize: vertical;
       }
-      #gemini-submit {
-          border: none;
-          cursor: pointer;
-          font-size: 1rem;
+      .btn-cta {
+        display:inline-block; background:var(--roxo); color:#fff; padding: 0.8rem 1.8rem; border-radius:10px;
+        text-decoration:none; font-weight:700; transition:.3s; border: none; cursor: pointer; font-size: 1rem;
       }
-      #gemini-submit:disabled {
-          background-color: #999;
-          cursor: not-allowed;
-      }
+      .btn-cta:hover { background:#360060; transform: translateY(-2px); }
       #gemini-result-container {
           margin-top: 2rem;
           padding: 1.5rem;
@@ -173,21 +271,13 @@
           white-space: pre-wrap;
           word-wrap: break-word;
       }
-      .loader {
-          border: 5px solid #f3f3f3;
-          border-radius: 50%;
-          border-top: 5px solid var(--roxo);
-          width: 40px;
-          height: 40px;
-          animation: spin 1s linear infinite;
-          margin: 1rem auto;
+       .loader {
+          border: 5px solid #f3f3f3; border-radius: 50%; border-top: 5px solid var(--roxo);
+          width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 1rem auto;
       }
-      @keyframes spin {
-          0% { transform: rotate(0deg); }
-          100% { transform: rotate(360deg); }
-      }
+      @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-      /* Estilos do Banner de Consentimento */
+      /* Banner de Consentimento */
       #cookie-consent-banner {
         position: fixed;
         bottom: 0;
@@ -195,7 +285,7 @@
         width: 100%;
         background-color: #222;
         color: #fff;
-        padding: 1.5rem;
+        padding: 1rem;
         box-shadow: 0 -4px 12px rgba(0,0,0,.2);
         z-index: 9999;
         display: none;
@@ -205,163 +295,178 @@
         flex-wrap: wrap;
         text-align: center;
       }
-      #cookie-consent-banner p { margin: 0; flex-grow: 1; max-width: 800px; font-size: 0.95rem; }
-      #cookie-consent-banner .buttons { display: flex; gap: 1rem; flex-shrink: 0; }
       .consent-btn {
-        padding: 0.75rem 1.5rem; border: none; border-radius: 8px; cursor: pointer; font-weight: 700; transition: background-color .3s;
+        padding: 0.6rem 1.2rem;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 700;
       }
-      .btn-accept { background-color: var(--roxo); color: #fff; }
-      .btn-accept:hover { background-color: #360060; }
-      .btn-reject { background-color: #555; color: #fff; }
-      .btn-reject:hover { background-color: #444; }
+      .btn-accept {
+        background-color: var(--roxo);
+        color: #fff;
+      }
     </style>
 </head>
 <body>
+    <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKKB2XWH"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
 
     <div class="overlay">
-      <header>
-        <img src="https://i.postimg.cc/x1kjf69j/logo-dsrvet-transparente.png" alt="Logo DSR VET Clínica Veterinária" />
-        <h1>Cuidado e carinho para quem você ama!</h1>
-        <p class="subtitulo">Atendimento especializado em cães, gatos e aves.</p>
-        <div class="cta">
-          <a id="cta-whatsapp-header" class="btn-cta" href="https://wa.me/5561994379597" target="_blank" rel="noopener noreferrer">
-            <i class="fab fa-whatsapp"></i> Agende seu atendimento
-          </a>
-        </div>
-      </header>
+      <div class="container">
+        <header>
+          <img src="https://i.postimg.cc/x1kjf69j/logo-dsrvet-transparente.png" alt="Logo DSR VET Clínica Veterinária" />
+          <h1>Cuidado e carinho para quem você ama!</h1>
+          <p class="subtitulo">Atendimento especializado em cães, gatos e aves.</p>
+        </header>
 
-      <main class="conteudo">
-        <div class="grid">
-          <div class="coluna">
-            <h2>Nossos serviços</h2>
-            <ul>
-              <li><i class="fas fa-user-md"></i> Consultas</li>
-              <li><i class="fas fa-file-medical"></i> Atestados</li>
-              <li><i class="fas fa-vials"></i> Exames laboratoriais</li>
-              <li><i class="fas fa-x-ray"></i> Exames de imagens</li>
-              <li><i class="fas fa-notes-medical"></i> Procedimentos em geral</li>
-              <li><i class="fas fa-syringe"></i> Cirurgias</li>
-              <li><i class="fas fa-bed"></i> Internação 24h</li>
-            </ul>
-            <div class="cta">
-              <a id="cta-whatsapp-servicos" class="btn-cta" href="https://wa.me/5561994379597" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-whatsapp"></i> Agende seu atendimento
-              </a>
+        <main>
+          <div class="grid">
+            <div class="coluna">
+              <h2>Nossos serviços</h2>
+              <ul>
+                <li><i class="fas fa-user-md"></i> Consultas</li>
+                <li><i class="fas fa-file-medical"></i> Atestados</li>
+                <li><i class="fas fa-vials"></i> Exames laboratoriais</li>
+                <li><i class="fas fa-x-ray"></i> Exames de imagens</li>
+                <li><i class="fas fa-notes-medical"></i> Procedimentos em geral</li>
+                <li><i class="fas fa-syringe"></i> Cirurgias</li>
+                <li><i class="fas fa-bed"></i> Internação 24h</li>
+              </ul>
+            </div>
+
+            <div class="coluna">
+              <h2>Nossos diferenciais</h2>
+              <ul>
+                <li><i class="fas fa-heart"></i> Atendimento humanizado</li>
+                <li><i class="fas fa-dove"></i> Especialização em aves</li>
+                <li><i class="fas fa-stethoscope"></i> Dermatologia veterinária</li>
+                <li><i class="fas fa-syringe"></i> Anestesiologia</li>
+                <li><i class="fas fa-hospital"></i> Estrutura moderna e acolhedora</li>
+              </ul>
             </div>
           </div>
-
-          <div class="coluna">
-            <h2>Nossos diferenciais</h2>
-            <ul>
-              <li><i class="fas fa-heart"></i> Atendimento humanizado e dedicado</li>
-              <li><i class="fas fa-dove"></i> Especialização em aves</li>
-              <li><i class="fas fa-stethoscope"></i> Dermatologia veterinária</li>
-              <li><i class="fas fa-syringe"></i> Anestesiologia</li>
-              <li><i class="fas fa-hospital"></i> Estrutura moderna e acolhedora</li>
-            </ul>
-            <div class="cta">
-              <a id="cta-whatsapp-diferenciais" class="btn-cta" href="https://wa.me/5561994379597" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-whatsapp"></i> Agende seu atendimento
-              </a>
-            </div>
+          
+          <!-- Funcionalidade IA Gemini (Posição Corrigida) -->
+          <div class="gemini-feature">
+              <h2><i class="fas fa-robot"></i> Tem alguma dúvida sobre o seu pet?</h2>
+              <p class="subtitulo">Use a nossa assistente virtual para obter informações gerais sobre cuidados. Lembre-se, ela não substitui a avaliação de um veterinário.</p>
+              <textarea id="gemini-prompt" placeholder="Ex: Qual a melhor ração para um filhote de cachorro?"></textarea>
+              <button id="gemini-submit" class="btn-cta"> ✨ Perguntar à IA </button>
+              <div id="gemini-loader" style="display: none; text-align: center; margin-top: 1.5rem;">
+                  <div class="loader"></div>
+                  <p>A buscar a melhor resposta...</p>
+              </div>
+              <div id="gemini-result-container" style="display: none;">
+                  <h3>Resposta da Assistente:</h3>
+                  <div id="gemini-result"></div>
+              </div>
           </div>
-        </div>
-        
-        <!-- Gemini Feature: Tire as suas Dúvidas -->
-        <div class="gemini-feature">
-            <h2><i class="fas fa-robot"></i> Tem alguma dúvida sobre o seu pet?</h2>
-            <p class="subtitulo">Use a nossa assistente virtual para obter informações gerais sobre cuidados. Lembre-se, ela não substitui a avaliação de um veterinário.</p>
-            <textarea id="gemini-prompt" placeholder="Ex: Qual a melhor ração para um filhote de cachorro?"></textarea>
-            <div class="cta">
-                <button id="gemini-submit" class="btn-cta">
-                    ✨ Perguntar à IA
-                </button>
-            </div>
-            <div id="gemini-loader" style="display: none; text-align: center; margin-top: 1.5rem;">
-                <div class="loader"></div>
-                <p>A buscar a melhor resposta...</p>
-            </div>
-            <div id="gemini-result-container" style="display: none;">
-                <h3>Resposta da Assistente:</h3>
-                <div id="gemini-result"></div>
-            </div>
-        </div>
 
-        <div class="estrutura">
-            <h2>Nossa estrutura</h2>
-            <div class="grupo">Recepção</div>
-            <div class="galeria">
-              <img src="https://i.postimg.cc/kG7DD7Dx/Whats-App-Image-2025-07-31-at-20-43-53.jpg" alt="Recepção da clínica DSR VET" loading="lazy">
-              <img src="https://i.postimg.cc/sxKxhbZb/Whats-App-Image-2025-07-31-at-20-43-53-1.jpg" alt="Balcão da recepção da clínica DSR VET" loading="lazy">
-              <img src="https://i.postimg.cc/mDfPfYsp/Whats-App-Image-2025-07-31-at-20-43-53-2.jpg" alt="Área de espera da clínica DSR VET" loading="lazy">
-            </div>
-        </div>
-        
-        <div class="estrutura">
-            <div class="grupo">Consultório</div>
-            <div class="galeria">
-              <img src="https://i.postimg.cc/25v5w1ZQ/Whats-App-Image-2025-07-31-at-20-16-04.jpg" alt="Consultório veterinário equipado" loading="lazy">
-              <img src="https://i.postimg.cc/MTSprz7h/Whats-App-Image-2025-07-31-at-20-22-56.jpg" alt="Mesa de atendimento do consultório" loading="lazy">
-              <img src="https://i.postimg.cc/L66np4cS/Whats-App-Image-2025-07-31-at-20-16-25-1.jpg" alt="Detalhe do consultório da DSR VET" loading="lazy">
-            </div>
-        </div>
-
-        <div class="estrutura">
-            <div class="grupo">Internação</div>
-            <div class="galeria">
-              <img src="https://i.postimg.cc/Z5WnW7YD/Whats-App-Image-2025-07-31-at-20-16-24.jpg" alt="Área de internação para animais" loading="lazy">
-              <img src="https://i.postimg.cc/wjnvLX7x/Whats-App-Image-2025-07-31-at-20-16-24-1.jpg" alt="Baias da internação veterinária" loading="lazy">
-              <img src="https://i.postimg.cc/tRzYwnmD/Whats-App-Image-2025-07-31-at-20-16-24-2.jpg" alt="Estrutura de internação 24h" loading="lazy">
-            </div>
-        </div>
-
-        <div class="hero-carousel" id="hero">
-          <button class="nav prev" aria-label="Foto anterior">❮</button>
-          <div class="slides">
-            <img src="https://i.postimg.cc/hhWYtqvs/Whats-App-Image-2025-08-10-at-12-10-20.jpg" alt="Veterinária da DSR VET com um cachorro" class="active" loading="lazy">
-            <img src="https://i.postimg.cc/DfJy0dm4/Whats-App-Image-2025-08-10-at-12-07-34-2.jpg" alt="Veterinária a cuidar de um pet" loading="lazy">
-            <img src="https://i.postimg.cc/9X6X7Rq8/Whats-App-Image-2025-08-10-at-12-07-34-1.jpg" alt="Veterinária com um animal no colo" loading="lazy">
-            <img src="https://i.postimg.cc/qM2JXJsk/Whats-App-Image-2025-08-10-at-12-07-34.jpg" alt="Atendimento carinhoso na DSR VET" loading="lazy">
-            <img src="https://i.postimg.cc/4d0MjcTr/Whats-App-Image-2025-08-01-at-19-56-45.jpg" alt="Equipa da DSR VET" loading="lazy">
+          <div class="estrutura">
+              <h2>Nossa estrutura</h2>
+              <div class="grupo">Recepção</div>
+              <div class="galeria">
+                <img src="https://i.postimg.cc/kG7DD7Dx/Whats-App-Image-2025-07-31-at-20-43-53.jpg" alt="Recepção da clínica DSR VET" loading="lazy">
+                <img src="https://i.postimg.cc/sxKxhbZb/Whats-App-Image-2025-07-31-at-20-43-53-1.jpg" alt="Balcão da recepção da clínica DSR VET" loading="lazy">
+                <img src="https://i.postimg.cc/mDfPfYsp/Whats-App-Image-2025-07-31-at-20-43-53-2.jpg" alt="Área de espera da clínica DSR VET" loading="lazy">
+              </div>
+              <div class="grupo">Consultório</div>
+              <div class="galeria">
+                <img src="https://i.postimg.cc/25v5w1ZQ/Whats-App-Image-2025-07-31-at-20-16-04.jpg" alt="Consultório veterinário equipado" loading="lazy">
+                <img src="https://i.postimg.cc/MTSprz7h/Whats-App-Image-2025-07-31-at-20-22-56.jpg" alt="Mesa de atendimento do consultório" loading="lazy">
+                <img src="https://i.postimg.cc/L66np4cS/Whats-App-Image-2025-07-31-at-20-16-25-1.jpg" alt="Detalhe do consultório da DSR VET" loading="lazy">
+              </div>
+              <div class="grupo">Internação</div>
+              <div class="galeria">
+                 <img src="https://i.postimg.cc/Z5WnW7YD/Whats-App-Image-2025-07-31-at-20-16-24.jpg" alt="Área de internação para animais" loading="lazy">
+                 <img src="https://i.postimg.cc/wjnvLX7x/Whats-App-Image-2025-07-31-at-20-16-24-1.jpg" alt="Baias da internação veterinária" loading="lazy">
+                 <img src="https://i.postimg.cc/tRzYwnmD/Whats-App-Image-2025-07-31-at-20-16-24-2.jpg" alt="Estrutura de internação 24h" loading="lazy">
+              </div>
           </div>
-          <button class="nav next" aria-label="Próxima foto">❯</button>
-          <div class="dots"></div>
-        </div>
+          
+          <!-- Carrossel de Fotos (Restaurado) -->
+          <div class="hero-carousel" id="hero">
+            <button class="nav prev" aria-label="Foto anterior">❮</button>
+            <div class="slides">
+              <img src="https://i.postimg.cc/hhWYtqvs/Whats-App-Image-2025-08-10-at-12-10-20.jpg" alt="Veterinária da DSR VET com um cachorro" class="active" loading="lazy">
+              <img src="https://i.postimg.cc/DfJy0dm4/Whats-App-Image-2025-08-10-at-12-07-34-2.jpg" alt="Veterinária a cuidar de um pet" loading="lazy">
+              <img src="https://i.postimg.cc/9X6X7Rq8/Whats-App-Image-2025-08-10-at-12-07-34-1.jpg" alt="Veterinária com um animal no colo" loading="lazy">
+              <img src="https://i.postimg.cc/qM2JXJsk/Whats-App-Image-2025-08-10-at-12-07-34.jpg" alt="Atendimento carinhoso na DSR VET" loading="lazy">
+              <img src="https://i.postimg.cc/4d0MjcTr/Whats-App-Image-2025-08-01-at-19-56-45.jpg" alt="Equipa da DSR VET" loading="lazy">
+            </div>
+            <button class="nav next" aria-label="Próxima foto">❯</button>
+            <div class="dots"></div>
+          </div>
 
-        <div class="cta">
-          <a id="cta-whatsapp-final" class="btn-cta" href="https://wa.me/5561994379597" target="_blank" rel="noopener noreferrer">
-            <i class="fab fa-whatsapp"></i> Agende seu atendimento
-          </a>
-        </div>
+          <div class="social">
+            <a href="https://www.instagram.com/dsr_vet" target="_blank" rel="noopener noreferrer">
+              <i class="fab fa-instagram"></i> Siga-nos no Instagram
+            </a>
+          </div>
 
-        <div class="social">
-          <a href="https://www.instagram.com/dsr_vet" target="_blank" rel="noopener noreferrer">
-            <i class="fab fa-instagram"></i> Siga-nos no Instagram @dsr_vet
-          </a>
-        </div>
+          <div class="mapa">
+            <a href="https://maps.app.goo.gl/povesneJissccok17" target="_blank" rel="noopener noreferrer" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 1;" aria-label="Abrir localização no Google Maps"></a>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3826.652102142278!2d-48.0568947257913!3d-15.912834346857105!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935a333f7d1b1d3f%3A0xe4294ea607ce9c75!2sDSR%20VET!5e0!3m2!1spt-BR!2sbr!4v1729271881774!5m2!1spt-BR!2sbr" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </main>
 
-        <div class="mapa">
-          <a href="https://www.google.com/maps/place/DSR+VET/@-15.9128397,-48.0543198,17z" target="_blank" rel="noopener noreferrer" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 1;" aria-label="Abrir localização no Google Maps"></a>
-          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15306.607525167425!2d-48.0543198!3d-15.9128397!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935a333f7d1b1d3f%3A0xe4294ea607ce9c75!2sQuadra%20601%20Conjunto%2001%20-%20Recanto%20das%20Emas%2C%20Bras%C3%ADlia%20-%20DF%2C%2072640-101!5e0!3m2!1spt-BR!2sbr!4v1720973000000" width="100%" height="300" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-      </main>
-
-      <footer>
-        <p><strong>Endereço:</strong> Quadra 601 conjunto 01, casa 22b, Recanto das Emas, Brasília - DF, CEP 72640101</p>
-      </footer>
+        <footer>
+          <p><strong>DSR VET</strong> | Quadra 601 conjunto 01, casa 22b, Recanto das Emas, Brasília - DF</p>
+        </footer>
+      </div>
     </div>
     
     <div id="cookie-consent-banner">
-      <p>Utilizamos cookies para otimizar a sua experiência e para fins de publicidade. Ao continuar a navegar, você concorda com o uso de cookies.</p>
-      <div class="buttons">
-        <button id="btn-accept-consent" class="consent-btn btn-accept">Aceitar</button>
-        <button id="btn-reject-consent" class="consent-btn btn-reject">Rejeitar</button>
-      </div>
+      <p>Utilizamos cookies para otimizar a sua experiência e para fins de publicidade.</p>
+      <button id="btn-accept-consent" class="consent-btn btn-accept">Aceitar</button>
     </div>
 
+    <a href="https://wa.me/5561994379597?text=ola%2C%20vim%20do%20site%20e%20gostaria%20de%20agendar%20um%20atendimento." target="_blank" rel="noopener noreferrer" class="floating-wpp" id="floating-wpp-button" aria-label="Fale conosco pelo WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
     <script>
+      // Rastreamento do Botão Flutuante (Versão GTM)
+      document.addEventListener('DOMContentLoaded', function() {
+        const floatingButton = document.getElementById('floating-wpp-button');
+
+        if (floatingButton) {
+          floatingButton.addEventListener('click', function() {
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+              'event': 'whatsapp_click'
+            });
+            console.log("Evento 'whatsapp_click' enviado para o GTM.");
+          });
+        }
+      });
+
+      // Lógica do Banner de Consentimento
+      document.addEventListener('DOMContentLoaded', function () {
+        const banner = document.getElementById('cookie-consent-banner');
+        const acceptBtn = document.getElementById('btn-accept-consent');
+        
+        function setConsent(consentState) {
+          gtag('consent', 'update', {
+            'ad_storage': consentState,
+            'analytics_storage': consentState
+          });
+          document.cookie = `cookie_consent=granted; path=/; max-age=31536000`; // 1 ano
+          banner.style.display = 'none';
+        }
+
+        acceptBtn.addEventListener('click', () => setConsent('granted'));
+
+        const hasConsent = document.cookie.split(';').some((item) => item.trim().startsWith('cookie_consent='));
+        if (!hasConsent) { 
+          banner.style.display = 'flex'; 
+        }
+      });
+      
+      // Script do Carrossel de Fotos
       (function(){
         const c = document.getElementById('hero');
         if(!c) return;
@@ -374,62 +479,16 @@
         const show = (i) => { imgs[idx].classList.remove('active'); dotsEl.children[idx].classList.remove('active'); idx = (i + imgs.length) % imgs.length; imgs[idx].classList.add('active'); dotsEl.children[idx].classList.add('active'); };
         const next  = () => show(idx + 1);
         const prev  = () => show(idx - 1);
-        const reset = () => { clearInterval(t); t = setInterval(next, 10000); };
+        const reset = () => { clearInterval(t); t = setInterval(next, 7000); };
         function go(i){ show(i); reset(); }
         btnNext.addEventListener('click', () => { next(); reset(); });
         btnPrev.addEventListener('click', () => { prev(); reset(); });
         c.addEventListener('mouseenter', () => clearInterval(t));
         c.addEventListener('mouseleave', reset);
-        document.addEventListener('keydown', (e) => { if(e.key === 'ArrowRight') { next(); reset(); } if(e.key === 'ArrowLeft')  { prev(); reset(); } });
         reset();
       })();
-    </script>
-    
-    <!-- [SOLUÇÃO DEFINITIVA] Script de Rastreamento de Conversão -->
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const ctaButtons = document.querySelectorAll('a[id^="cta-whatsapp-"]');
-        // ID da sua conversão do Google Ads (AW-ID_DA_CONTA/RÓTULO_DA_CONVERSÃO)
-        const conversionId = 'AW-17475784677/7_hNCP6T9agbEOWfjY1B';
 
-        ctaButtons.forEach(function(button) {
-          button.addEventListener('click', function() {
-            // Método 1: Evento personalizado para o GTM (mantido como boa prática e para análise)
-            window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push({ 'event': 'whatsapp_click' });
-
-            // Método 2: Chamada direta para o Google Ads (solução definitiva para o rastreamento de conversões)
-            if (typeof gtag === 'function') {
-              gtag('event', 'conversion', { 'send_to': conversionId });
-              console.log('Sinal de conversão enviado diretamente para o Google Ads:', conversionId);
-            } else {
-              console.error('A função gtag não foi encontrada. A conversão direta não pôde ser enviada.');
-            }
-          });
-        });
-      });
-    </script>
-    
-    <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        const banner = document.getElementById('cookie-consent-banner');
-        const acceptBtn = document.getElementById('btn-accept-consent');
-        const rejectBtn = document.getElementById('btn-reject-consent');
-        function setConsent(consentState) {
-          const consent = { 'ad_storage': consentState, 'ad_user_data': consentState, 'ad_personalization': consentState, 'analytics_storage': consentState };
-          gtag('consent', 'update', consent);
-          document.cookie = `cookie_consent=${consentState}; path=/; max-age=31536000`;
-          banner.style.display = 'none';
-        }
-        acceptBtn.addEventListener('click', () => setConsent('granted'));
-        rejectBtn.addEventListener('click', () => setConsent('denied'));
-        const hasConsent = document.cookie.split(';').some((item) => item.trim().startsWith('cookie_consent='));
-        if (!hasConsent) { banner.style.display = 'flex'; }
-      });
-    </script>
-    
-    <!-- Script da Assistente IA Gemini -->
-    <script>
+      // Script da Assistente IA Gemini
       (function() {
         const submitButton = document.getElementById('gemini-submit');
         const promptInput = document.getElementById('gemini-prompt');
@@ -449,15 +508,9 @@
 
           try {
             const payload = {
-              contents: [{
-                  parts: [{ text: prompt }]
-              }],
-              systemInstruction: {
-                parts: [{ text: systemPrompt }]
-              },
-              generationConfig: {
-                maxOutputTokens: 8192,
-              }
+              contents: [{ parts: [{ text: prompt }] }],
+              systemInstruction: { parts: [{ text: systemPrompt }] },
+              generationConfig: { maxOutputTokens: 8192 }
             };
 
             const response = await fetch(apiUrl, {
@@ -474,17 +527,15 @@
             const result = await response.json();
             
             let text = 'Não foi possível obter uma resposta. Por favor, tente novamente.';
-            if (result.candidates && result.candidates.length > 0 && result.candidates[0].content?.parts?.[0]?.text) {
+            if (result.candidates && result.candidates[0].content?.parts?.[0]?.text) {
               text = result.candidates[0].content.parts[0].text;
             } else if (result.candidates && result.candidates[0].finishReason === 'SAFETY') {
                 text = 'A sua pergunta não pôde ser respondida devido às nossas diretrizes de segurança. Por favor, reformule a sua pergunta.';
             }
-
             return text;
-
           } catch (error) {
             console.error("Erro ao chamar a API Gemini:", error);
-            return `Ocorreu um erro ao buscar a resposta. Por favor, verifique a sua conexão e tente novamente.\nDetalhe: ${error.message}`;
+            return `Ocorreu um erro ao buscar a resposta. Detalhe: ${error.message}`;
           } finally {
             loader.style.display = 'none';
             submitButton.disabled = false;
@@ -504,4 +555,3 @@
 </body>
 </html>
 
- 
