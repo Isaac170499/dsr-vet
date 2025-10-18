@@ -241,6 +241,12 @@
           margin-top: 2.5rem;
           text-align: center;
       }
+      .gemini-input-area { /* NOVO */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
       #gemini-prompt {
           width: 100%;
           max-width: 600px;
@@ -250,7 +256,6 @@
           border: 1px solid #ccc;
           font-family: inherit;
           font-size: 1rem;
-          margin-bottom: 1rem;
           resize: vertical;
       }
       .btn-cta {
@@ -353,8 +358,10 @@
           <div class="gemini-feature">
               <h2><i class="fas fa-robot"></i> Tem alguma dúvida sobre o seu pet?</h2>
               <p class="subtitulo">Use a nossa assistente virtual para obter informações gerais sobre cuidados. Lembre-se, ela não substitui a avaliação de um veterinário.</p>
-              <textarea id="gemini-prompt" placeholder="Ex: Qual a melhor ração para um filhote de cachorro?"></textarea>
-              <button id="gemini-submit" class="btn-cta"> ✨ Perguntar à IA </button>
+              <div class="gemini-input-area">
+                <textarea id="gemini-prompt" placeholder="Ex: Qual a melhor ração para um filhote de cachorro?"></textarea>
+                <button id="gemini-submit" class="btn-cta"> ✨ Perguntar à IA </button>
+              </div>
               <div id="gemini-loader" style="display: none; text-align: center; margin-top: 1.5rem;">
                   <div class="loader"></div>
                   <p>A buscar a melhor resposta...</p>
@@ -554,4 +561,5 @@
     </script>
 </body>
 </html>
+
 
