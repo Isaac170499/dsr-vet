@@ -3,12 +3,14 @@
 <head>
     <!-- [IMPORTANTE] Script de Consentimento - Deve vir ANTES do GTM -->
     <script>
-      // Define o estado de consentimento padrão como 'negado'
+      // Define o estado de consentimento padrão como 'negado' para todos os tipos
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('consent', 'default', {
         'ad_storage': 'denied',
-        'analytics_storage': 'denied'
+        'analytics_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied'
       });
     </script>
 
@@ -241,7 +243,7 @@
           margin-top: 2.5rem;
           text-align: center;
       }
-      .gemini-input-area { /* NOVO */
+      .gemini-input-area {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -451,7 +453,7 @@
         }
       });
 
-      // Lógica do Banner de Consentimento
+      // Lógica do Banner de Consentimento (VERSÃO CORRIGIDA)
       document.addEventListener('DOMContentLoaded', function () {
         const banner = document.getElementById('cookie-consent-banner');
         const acceptBtn = document.getElementById('btn-accept-consent');
@@ -459,7 +461,9 @@
         function setConsent(consentState) {
           gtag('consent', 'update', {
             'ad_storage': consentState,
-            'analytics_storage': consentState
+            'analytics_storage': consentState,
+            'ad_user_data': consentState,
+            'ad_personalization': consentState
           });
           document.cookie = `cookie_consent=granted; path=/; max-age=31536000`; // 1 ano
           banner.style.display = 'none';
@@ -561,5 +565,4 @@
     </script>
 </body>
 </html>
-
 
