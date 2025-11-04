@@ -1,35 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <!-- [IMPORTANTE] Script de Consentimento - Deve vir ANTES do GTM -->
-    <script>
-      // Define o estado de consentimento padrão como 'negado' para todos os tipos
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('consent', 'default', {
-        'ad_storage': 'denied',
-        'analytics_storage': 'denied',
-        'ad_user_data': 'denied',
-        'ad_personalization': 'denied'
-      });
-    </script>
-
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-NKKB2XWH');</script>
-    <!-- End Google Tag Manager -->
-
-    <!-- Global site tag (gtag.js) - Base para o GTM -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17475784677"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'AW-17475784677');
-    </script>
+    <!-- Todas as tags do Google (GTM, Ads, Consentimento) foram removidas -->
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -60,7 +32,7 @@
         background-size: cover;
       }
       .overlay {
-        background-color: rgba(255, 255, 255, 0.85);
+        background-color: rgba(255, 255, 255, 0.7);
         min-height: 100vh;
         padding: 2rem 1rem;
       }
@@ -210,7 +182,7 @@
         }
       }
 
-      /* Botão Flutuante do WhatsApp */
+      /* Botão Flutuante */
       .floating-wpp {
         position: fixed;
         bottom: 25px;
@@ -284,42 +256,12 @@
       }
       @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-      /* Banner de Consentimento */
-      #cookie-consent-banner {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        background-color: #222;
-        color: #fff;
-        padding: 1rem;
-        box-shadow: 0 -4px 12px rgba(0,0,0,.2);
-        z-index: 9999;
-        display: none;
-        align-items: center;
-        justify-content: center;
-        gap: 1rem;
-        flex-wrap: wrap;
-        text-align: center;
-      }
-      .consent-btn {
-        padding: 0.6rem 1.2rem;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        font-weight: 700;
-      }
-      .btn-accept {
-        background-color: var(--roxo);
-        color: #fff;
-      }
+      /* Banner de Consentimento (Removido do Estilo) */
+
     </style>
 </head>
 <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKKB2XWH"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
+    <!-- GTM noscript removido -->
 
     <div class="overlay">
       <div class="container">
@@ -428,54 +370,14 @@
       </div>
     </div>
     
-    <div id="cookie-consent-banner">
-      <p>Utilizamos cookies para otimizar a sua experiência e para fins de publicidade.</p>
-      <button id="btn-accept-consent" class="consent-btn btn-accept">Aceitar</button>
-    </div>
+    <!-- Banner de Consentimento Removido -->
 
-    <a href="https://wa.me/5561994379597?text=ola%2C%20vim%20do%20site%20e%20gostaria%20de%20agendar%20um%20atendimento." target="_blank" rel="noopener noreferrer" class="floating-wpp" id="floating-wpp-button" aria-label="Fale conosco pelo WhatsApp">
+    <a href="https://isaac170499.github.io/DSR-VET-clinica-veterin-ria/" target="_blank" rel="noopener noreferrer" class="floating-wpp" id="floating-wpp-button" aria-label="Visite nosso site principal">
         <i class="fab fa-whatsapp"></i>
     </a>
 
     <script>
-      // Rastreamento do Botão Flutuante (Versão GTM)
-      document.addEventListener('DOMContentLoaded', function() {
-        const floatingButton = document.getElementById('floating-wpp-button');
-
-        if (floatingButton) {
-          floatingButton.addEventListener('click', function() {
-            window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push({
-              'event': 'whatsapp_click'
-            });
-            console.log("Evento 'whatsapp_click' enviado para o GTM.");
-          });
-        }
-      });
-
-      // Lógica do Banner de Consentimento (VERSÃO CORRIGIDA)
-      document.addEventListener('DOMContentLoaded', function () {
-        const banner = document.getElementById('cookie-consent-banner');
-        const acceptBtn = document.getElementById('btn-accept-consent');
-        
-        function setConsent(consentState) {
-          gtag('consent', 'update', {
-            'ad_storage': consentState,
-            'analytics_storage': consentState,
-            'ad_user_data': consentState,
-            'ad_personalization': consentState
-          });
-          document.cookie = `cookie_consent=granted; path=/; max-age=31536000`; // 1 ano
-          banner.style.display = 'none';
-        }
-
-        acceptBtn.addEventListener('click', () => setConsent('granted'));
-
-        const hasConsent = document.cookie.split(';').some((item) => item.trim().startsWith('cookie_consent='));
-        if (!hasConsent) { 
-          banner.style.display = 'flex'; 
-        }
-      });
+      // Scripts de Rastreamento e Consentimento Removidos
       
       // Script do Carrossel de Fotos
       (function(){
@@ -565,4 +467,3 @@
     </script>
 </body>
 </html>
-
